@@ -1,8 +1,8 @@
 {
   "name": "@ecomplus/shopping-cart",
   "version": "0.0.1",
-  "description": "Handle shopping cart based on E-Com Plus cart object model",
-  "main": "src/index.js",
+  "description": "Simple vanilla JS library to handle shopping cart object",
+  "main": "dist/shopping-cart.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "jsdoc src -r README.md -d docs",
@@ -30,6 +30,7 @@
     "@commitlint/config-conventional": "^7.5.0",
     "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.4.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
