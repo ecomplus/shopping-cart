@@ -4,7 +4,10 @@
   "description": "Handle shopping cart based on E-Com Plus cart object model",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "jsdoc src -r README.md -d docs",
+    "serve": "gulp",
+    "build": "gulp dist"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "husky": "^1.3.1",
+    "jsdoc": "^3.5.5",
     "standard": "^12.0.1"
   },
   "husky": {
