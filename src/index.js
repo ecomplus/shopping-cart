@@ -17,6 +17,7 @@ var EcomCart = {}
   /**
    * Current cart object.
    * @type {object}
+   * @see {@link https://developers.e-com.plus/docs/api/#/store/carts/carts|Object model}
    */
   EcomCart.cart = {
     subtotal: 0,
