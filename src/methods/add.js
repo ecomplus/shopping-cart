@@ -26,7 +26,12 @@
         // same product and variation
         // update quantity and price
         item.quantity += newItem.quantity
-        item.price = newItem.price
+        if (newItem.price) {
+          item.price = newItem.price
+        }
+        if (newItem.final_price) {
+          item.final_price = newItem.final_price
+        }
         return EcomCart.handleItem(item)
       }
     }
