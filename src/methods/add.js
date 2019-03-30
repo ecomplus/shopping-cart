@@ -5,7 +5,8 @@
 
   /**
    * Add item to cart.
-   * @param {object} item - Cart item object
+   * @param {object} newItem - New cart item object
+   * @returns {boolean} True if item is valid and was added or updated on cart
    */
 
   EcomCart.add = function (newItem) {
@@ -16,7 +17,7 @@
       // do the stuf
     } else {
       console.error(new Error('Trying to add invalid item object'))
-      return
+      return false
     }
 
     for (var i = 0; i < EcomCart.items.length; i++) {
@@ -32,12 +33,14 @@
         if (newItem.final_price) {
           item.final_price = newItem.final_price
         }
-        return EcomCart.handleItem(item)
+        EcomCart.handleItem(item)
+        return true
       }
     }
 
     // add item to cart
     EcomCart.items.push(newItem)
     EcomCart.handleItem(newItem)
+    return true
   }
 }())
