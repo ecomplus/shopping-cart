@@ -1,6 +1,6 @@
 /* global EcomCart */
 
-(function () {
+;(function () {
   'use strict'
 
   /**
@@ -24,8 +24,9 @@
       // check IDs
       if (item.product_id === newItem.product_id && item.variation_id === newItem.variation_id) {
         // same product and variation
-        // update quantity
+        // update quantity and price
         item.quantity += newItem.quantity
+        item.price = newItem.price
         return EcomCart.handleItem(item)
       }
     }
