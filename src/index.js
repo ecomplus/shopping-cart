@@ -14,22 +14,6 @@ var EcomCart = {}
 ;(function () {
   'use strict'
 
-  /**
-   * Current cart object.
-   * @type {object}
-   * @see {@link https://developers.e-com.plus/docs/api/#/store/carts/carts|Object model}
-   */
-  EcomCart.cart = {
-    subtotal: 0,
-    items: []
-  }
-
-  /**
-   * List of cart items.
-   * @type {array.<object>}
-   */
-  EcomCart.items = EcomCart.cart.items
-
   // use browser local storage if available
   var db = window && window.localStorage
   // try to load stored cart object
@@ -37,7 +21,9 @@ var EcomCart = {}
     var json = db.getItem('cart')
     try {
       var cart = JSON.parse(json)
-      EcomCart.cart = cart
+      if (typeof cart === 'object' && cart !== null && Array.isArray(cart.items)) {
+        EcomCart.cart = cart
+      }
     } catch (err) {
       // ignore invalid cart JSON
     }
@@ -59,6 +45,30 @@ var EcomCart = {}
   EcomCart.handleItem = function (item) {
     EcomCart.saveCart()
   }
+
+  if (!EcomCart.cart) {
+    /**
+     * Current cart object.
+     * @type {object}
+     * @see {@link https://developers.e-com.plus/docs/api/#/store/carts/carts|Object model}
+     */
+    EcomCart.cart = {
+      subtotal: 0,
+      items: []
+    }
+  } else {
+    // fix subtotal and items
+    EcomCart.cart.subtotal = 0
+    for (var i = 0; i < EcomCart.cart.items.length; i++) {
+      EcomCart.handleItem(EcomCart.cart.items[i])
+    }
+  }
+
+  /**
+   * List of cart items.
+   * @type {array.<object>}
+   */
+  EcomCart.items = EcomCart.cart.items
 
   if (typeof window === 'object') {
     // on browser
