@@ -30,5 +30,9 @@
         return EcomCart.handleItem(item)
       }
     }
+
+    // add item to cart
+    EcomCart.items.push(newItem)
+    EcomCart.handleItem(newItem)
   }
 }())
