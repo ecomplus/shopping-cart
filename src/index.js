@@ -53,7 +53,7 @@ var EcomCart = {}
     }
     // trigger callbacks
     for (var i = 0; i < callbacks.length; i++) {
-      callbacks[i]()
+      callbacks[i](null, EcomCart.cart)
     }
   }
 
