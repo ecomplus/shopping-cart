@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: methods/increaseItemQnt.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,41 +17,45 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: methods/increaseItemQnt.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>shopping-cart</h1><p><a href="https://www.codefactor.io/repository/github/ecomclub/shopping-cart"><img src="https://www.codefactor.io/repository/github/ecomclub/shopping-cart/badge" alt="CodeFactor"></a>
-<a href="https://www.npmjs.org/@ecomplus/shopping-cart"><img src="https://img.shields.io/npm/v/@ecomplus/shopping-cart.svg" alt="npm version"></a>
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license mit"></a></p>
-<p>Simple vanilla JS library to handle shopping cart with
-common methods following
-<a href="https://developers.e-com.plus/docs/api/#/store/carts/carts">E-Com Plus cart object model</a></p></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* global EcomCart */
+
+;(function () {
+  'use strict'
+
+  /**
+   * Increase quantity of specific item by ID.
+   * @param {string} itemId - The unique object ID of item
+   * @param {integer} qnt - Quantity to increase
+   * @returns {boolean} True if the item was found
+   */
+
+  EcomCart.increaseItemQnt = function (itemId, qnt) {
+    // find respective item on list by ID
+    for (var i = 0; i &lt; EcomCart.items.length; i++) {
+      var item = EcomCart.items[i]
+      if (item._id === itemId) {
+        // item found
+        item.quantity += qnt
+        // fix new quantity if needed and save cart object
+        EcomCart.handleItem(item)
+        return true
+      }
+    }
+    return false
+  }
+}())
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
