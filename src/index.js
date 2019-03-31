@@ -30,6 +30,19 @@ var EcomCart = {}
    */
   EcomCart.items = EcomCart.cart.items
 
+  // trigger callbacks after cart changes (events)
+  var callbacks = []
+
+  /**
+   * Add callback function for cart events.
+   * @param {function} callback - The callback function
+   */
+  EcomCart.addCallback = function (callback) {
+    if (typeof callback === 'function') {
+      callbacks.push(callback)
+    }
+  }
+
   /**
    * Save cart object to browser localStorage.
    */
@@ -37,6 +50,10 @@ var EcomCart = {}
     /* global localStorage */
     if (typeof localStorage === 'object' && localStorage) {
       localStorage.setItem('cart', JSON.stringify(EcomCart.cart))
+    }
+    // trigger callbacks
+    for (var i = 0; i < callbacks.length; i++) {
+      callbacks[i]()
     }
   }
 
