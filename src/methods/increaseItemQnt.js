@@ -10,7 +10,7 @@
    * @returns {boolean} True if the item was found
    */
 
-  EcomCart.increaseQuantity = function (itemId, qnt) {
+  EcomCart.increaseItemQnt = function (itemId, qnt) {
     // find respective item on list by ID
     for (var i = 0; i < EcomCart.items.length; i++) {
       var item = EcomCart.items[i]
