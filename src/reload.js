@@ -11,7 +11,7 @@
       var cart = JSON.parse(json)
       if (typeof cart === 'object' && cart !== null && Array.isArray(cart.items)) {
         cart.items.forEach(function (item) {
-          EcomCart.add(item)
+          EcomCart.addItem(item)
         })
       }
     } catch (err) {

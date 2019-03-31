@@ -9,7 +9,7 @@
    * @returns {string|null} Returns the item ID or null when object is invalid
    */
 
-  EcomCart.add = function (newItem) {
+  EcomCart.addItem = function (newItem) {
     // check required fields
     if (typeof newItem.product_id === 'string' &&
       typeof newItem.quantity === 'number' && newItem.quantity >= 0 &&

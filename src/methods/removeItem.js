@@ -9,7 +9,7 @@
    * @returns {boolean} True if the item was found and removed
    */
 
-  EcomCart.remove = function (itemId) {
+  EcomCart.removeItem = function (itemId) {
     // find respective item on list by ID
     for (var i = 0; i < EcomCart.items.length; i++) {
       if (EcomCart.items[i]._id === itemId) {
