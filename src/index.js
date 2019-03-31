@@ -14,27 +14,29 @@ var EcomCart = {}
 ;(function () {
   'use strict'
 
-  // use browser local storage if available
-  var db = window && window.localStorage
-  // try to load stored cart object
-  if (db) {
-    var json = db.getItem('cart')
-    try {
-      var cart = JSON.parse(json)
-      if (typeof cart === 'object' && cart !== null && Array.isArray(cart.items)) {
-        EcomCart.cart = cart
-      }
-    } catch (err) {
-      // ignore invalid cart JSON
-    }
+  /**
+   * Current cart object.
+   * @type {object}
+   * @see {@link https://developers.e-com.plus/docs/api/#/store/carts/carts|Object model}
+   */
+  EcomCart.cart = {
+    subtotal: 0,
+    items: []
   }
+
+  /**
+   * List of cart items.
+   * @type {array.<object>}
+   */
+  EcomCart.items = EcomCart.cart.items
 
   /**
    * Save cart object to browser localStorage.
    */
   EcomCart.saveCart = function () {
-    if (db) {
-      db.setItem('cart', JSON.stringify(EcomCart.cart))
+    /* global localStorage */
+    if (typeof localStorage === 'object' && localStorage) {
+      localStorage.setItem('cart', JSON.stringify(EcomCart.cart))
     }
   }
 
@@ -43,32 +45,27 @@ var EcomCart = {}
    * @param {object} item - Cart item object
    */
   EcomCart.handleItem = function (item) {
+    // fix item quantity if needed
+    if (item.min_quantity && item.quantity < item.min_quantity) {
+      item.quantity = item.min_quantity
+    } else if (item.max_quantity && item.quantity > item.max_quantity) {
+      item.quantity = item.max_quantity
+    }
+    // sum item price to current cart subtotal value
+    EcomCart.cart.subtotal += item.quantity * (item.final_price || item.price)
     EcomCart.saveCart()
-  }
 
-  if (!EcomCart.cart) {
-    /**
-     * Current cart object.
-     * @type {object}
-     * @see {@link https://developers.e-com.plus/docs/api/#/store/carts/carts|Object model}
-     */
-    EcomCart.cart = {
-      subtotal: 0,
-      items: []
+    if (!item._id) {
+      // generate random ObjectID
+      // 24 chars hexadecimal string
+      item._id = '1234'
+      var hexa = '0123456789abcdef'
+      for (var i = item._id.length; i < 24; i++) {
+        item._id += hexa.charAt(Math.floor(Math.random() * hexa.length))
+      }
     }
-  } else {
-    // fix subtotal and items
-    EcomCart.cart.subtotal = 0
-    for (var i = 0; i < EcomCart.cart.items.length; i++) {
-      EcomCart.handleItem(EcomCart.cart.items[i])
-    }
+    return item._id
   }
-
-  /**
-   * List of cart items.
-   * @type {array.<object>}
-   */
-  EcomCart.items = EcomCart.cart.items
 
   if (typeof window === 'object') {
     // on browser
@@ -83,3 +80,6 @@ var EcomCart = {}
     module.exports = EcomCart
   }
 }())
+
+// require('methods/*')
+// require('reload')
