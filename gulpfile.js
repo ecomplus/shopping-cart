@@ -24,7 +24,7 @@ const serve = () => {
 }
 
 const dist = () => {
-  return src([ './src/index.js', './src/methods/*.js' ])
+  return src([ './src/index.js', './src/methods/*.js', './src/reload.js' ])
     .pipe(sourcemaps.init())
     .pipe(concat('shopping-cart.js'))
     .pipe(uglify())
