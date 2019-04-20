@@ -80,11 +80,15 @@ var EcomCart = {}
     }
 
     // fix item quantity if needed
-    if (item.min_quantity && item.quantity < item.min_quantity) {
-      item.quantity = item.min_quantity
-    } else if (item.max_quantity && item.quantity > item.max_quantity) {
-      item.quantity = item.max_quantity
+    // use minimun quantity 1 by default
+    var min = item.min_quantity || 1
+    var max = item.max_quantity
+    if (typeof item.quantity !== 'number' || isNaN(item.quantity) || item.quantity < min) {
+      item.quantity = min
+    } else if (max && item.quantity > max) {
+      item.quantity = max
     }
+    // save the cart object again and return current item ID
     EcomCart.saveCart()
     return item._id
   }
