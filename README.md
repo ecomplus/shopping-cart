@@ -7,3 +7,7 @@
 Simple vanilla JS library to handle shopping cart with
 common methods following
 [E-Com Plus cart object model](https://developers.e-com.plus/docs/api/#/store/carts/carts)
+
+## Documentation
+
+[`EcomCart` object and methods](https://developers.e-com.plus/shopping-cart/EcomCart.html)
