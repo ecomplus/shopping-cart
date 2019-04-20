@@ -12,8 +12,8 @@
 
   EcomCart.increaseItemQnt = function (itemId, qnt) {
     // find respective item on list by ID
-    for (var i = 0; i < EcomCart.items.length; i++) {
-      var item = EcomCart.items[i]
+    for (var i = 0; i < EcomCart.cart.items.length; i++) {
+      var item = EcomCart.cart.items[i]
       if (item._id === itemId) {
         // item found
         item.quantity += qnt

@@ -20,8 +20,8 @@
       return null
     }
 
-    for (var i = 0; i < EcomCart.items.length; i++) {
-      var item = EcomCart.items[i]
+    for (var i = 0; i < EcomCart.cart.items.length; i++) {
+      var item = EcomCart.cart.items[i]
       // check IDs
       if (item.product_id === newItem.product_id && item.variation_id === newItem.variation_id) {
         // same product and variation
@@ -38,7 +38,7 @@
     }
 
     // add item to cart
-    EcomCart.items.push(newItem)
+    EcomCart.cart.items.push(newItem)
     return EcomCart.handleItem(newItem)
   }
 }())

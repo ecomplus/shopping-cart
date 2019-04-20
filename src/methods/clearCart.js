@@ -9,7 +9,7 @@
 
   EcomCart.clearCart = function () {
     // empty the items array and save
-    EcomCart.items = []
+    EcomCart.cart.items = []
     EcomCart.saveCart()
   }
 }())

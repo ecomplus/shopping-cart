@@ -25,13 +25,6 @@ var EcomCart = {}
     items: []
   }
 
-  /**
-   * List of cart items.
-   * @type {array.<object>}
-   */
-
-  EcomCart.items = EcomCart.cart.items
-
   // trigger callbacks after cart changes (events)
   var callbacks = []
 
@@ -54,8 +47,8 @@ var EcomCart = {}
     // fix cart subtotal
     EcomCart.cart.subtotal = 0
     var i, item
-    for (i = 0; i < EcomCart.items.length; i++) {
-      item = EcomCart.items[i]
+    for (i = 0; i < EcomCart.cart.items.length; i++) {
+      item = EcomCart.cart.items[i]
       EcomCart.cart.subtotal += item.quantity * (item.final_price || item.price)
     }
 
