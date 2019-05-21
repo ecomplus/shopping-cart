@@ -104,7 +104,7 @@ var EcomCart = {}
     // set EcomCart object globally
     window.EcomCart = EcomCart
   }
-  if (module && module.exports) {
+  if (typeof module !== 'undefined' && module.exports) {
     // Node.js
     module.exports = EcomCart
   }
