@@ -71,8 +71,8 @@ const EcomCart = function (storeId, storageKey = _key, localStorage = _storage) 
 
   // instance methods
   this.addItem = (newItem, save) => addItem(self, newItem, save)
-  this.addPoduct = (product, variationId, qnt, save) => addPoduct(self, product, variationId, qnt, save)
-  this.increaseItemQnt = (itemId, quantity, save) => increaseItemQnt(self, quantity, itemId)
+  this.addProduct = (product, variationId, qnt, save) => addPoduct(self, product, variationId, qnt, save)
+  this.increaseItemQnt = (itemId, quantity, save) => increaseItemQnt(self, itemId, quantity)
   this.removeItem = (itemId, save) => removeItem(self, itemId, save)
   this.save = () => save(self)
   this.clear = () => clear(self)
@@ -89,8 +89,6 @@ const EcomCart = function (storeId, storageKey = _key, localStorage = _storage) 
       }
       if (data && Array.isArray(data.items)) {
         self.data = data
-        // add each item one by one to fix it if needed
-        data.items.forEach(item => self.addItem(item))
       }
     }
   }
