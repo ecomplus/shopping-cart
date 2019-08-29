@@ -5,6 +5,7 @@
  */
 
 import { _config } from '@ecomplus/utils'
+import emitter from './lib/emitter'
 
 import addItem from './methods/add-item'
 import addPoduct from './methods/add-product'
@@ -34,7 +35,7 @@ import clear from './methods/clear'
 const _key = 'ecomShoppingCart'
 const _storage = typeof window === 'object' && window.localStorage
 
-export default function (storeId, storageKey = _key, localStorage = _storage) {
+const EcomCart = function (storeId, storageKey = _key, localStorage = _storage) {
   const self = this
 
   /**
@@ -94,6 +95,15 @@ export default function (storeId, storageKey = _key, localStorage = _storage) {
     }
   }
 }
+
+// events emitter
+;['on', 'off', 'once'].forEach(method => {
+  EcomCart[method] = (ev, fn) => {
+    emitter[method](ev, fn)
+  }
+})
+
+export default EcomCart
 
 /**
  * Construct a new shopping cart instance object.
