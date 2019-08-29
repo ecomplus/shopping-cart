@@ -31,7 +31,6 @@
   "homepage": "https://github.com/ecomclub/shopping-cart#readme",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
-    "@ecomplus/client": "^1.1.2",
     "@ecomplus/utils": "^1.0.1",
     "core-js": "^3.2.1",
     "eventemitter3": "^4.0.0"
