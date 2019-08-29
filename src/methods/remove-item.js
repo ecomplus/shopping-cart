@@ -2,15 +2,15 @@ import emitter from './../lib/emitter'
 
 export default (self, itemId, save = true) => {
   // find respective item on list by ID
-  const { cart } = self
-  for (let i = 0; i < cart.items.length; i++) {
-    const item = cart.items[i]
+  const { data } = self
+  for (let i = 0; i < data.items.length; i++) {
+    const item = data.items[i]
     if (item._id === itemId) {
       // item found
       // remove from items array
-      cart.items.splice(i, 1)
-      cart.save()
-      emitter.emit('removeItemQnt', { cart, item })
+      data.items.splice(i, 1)
+      data.save()
+      emitter.emit('removeItemQnt', { data, item })
       return item
     }
   }

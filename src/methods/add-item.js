@@ -12,10 +12,10 @@ export default (self, newItem, save = true) => {
     return null
   }
 
-  const { cart } = self
+  const { data } = self
   let fixedItem
-  for (let i = 0; i < cart.items.length; i++) {
-    const item = cart.items[i]
+  for (let i = 0; i < data.items.length; i++) {
+    const item = data.items[i]
     // check IDs
     if (item.product_id === newItem.product_id && item.variation_id === newItem.variation_id) {
       // same product and variation
@@ -37,14 +37,14 @@ export default (self, newItem, save = true) => {
       newItem._id = randomObjectId()
     }
     // add item to cart
-    cart.items.push(newItem)
+    data.items.push(newItem)
     fixedItem = fixItemQuantity(newItem)
   }
 
   if (save) {
     self.save()
   }
-  emitter.emit('addItem', { cart, item: fixedItem })
+  emitter.emit('addItem', { data, item: fixedItem })
   return fixedItem
 }
 
