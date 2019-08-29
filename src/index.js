@@ -8,9 +8,13 @@ import { _config } from '@ecomplus/utils'
 
 import addItem from './methods/add-item'
 import addPoduct from './methods/add-product'
+import increaseItemQnt from './methods/increase-item-qnt'
+import removeItem from './methods/remove-item'
+import save from './methods/save'
+import clear from './methods/clear'
 
 /**
- * Vanilla JS library to handle shopping cart object on E-Com Plus stores.
+ * Simple JS library to handle shopping cart object on E-Com Plus stores.
  * @module @ecomplus/shopping-cart
  * @see EcomCart
  *
@@ -67,6 +71,10 @@ export default function (storeId, storageKey = _key, localStorage = _storage) {
   // instance methods
   this.addItem = addItem
   this.addPoduct = addPoduct
+  this.increaseItemQnt = increaseItemQnt
+  this.removeItem = removeItem
+  this.save = save
+  this.clear = clear
 
   if (localStorage && storageKey) {
     // try to preset cart data from storage
