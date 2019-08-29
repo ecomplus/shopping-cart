@@ -5,6 +5,8 @@
  */
 
 import { _config } from '@ecomplus/utils'
+import addItem from './methods/add-item'
+import fixItem from './methods/fix-item'
 
 /**
  * Vanilla JS library to handle shopping cart object on E-Com Plus stores.
@@ -57,7 +59,13 @@ export default function (storeId, storageKey = _key, localStorage = _storage) {
    * @name EcomCart#data
    * @type {array<string>}
    */
-  this.data = {}
+  this.data = {
+    items: []
+  }
+
+  // instance methods
+  this.addItem = addItem
+  this.fixItem = fixItem
 
   if (localStorage && storageKey) {
     // try to preset cart data from storage
