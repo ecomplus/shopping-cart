@@ -71,7 +71,7 @@ export default function (storeId, storageKey = _key, localStorage = _storage) {
   if (localStorage && storageKey) {
     // try to preset cart data from storage
     const json = localStorage.getItem(storageKey)
-    if (typeof data === 'string') {
+    if (json) {
       let data
       try {
         data = JSON.parse(json)
@@ -80,6 +80,8 @@ export default function (storeId, storageKey = _key, localStorage = _storage) {
       }
       if (data && Array.isArray(data.items)) {
         self.data = data
+        // add each item one by one to fix it if needed
+        data.items.forEach(item => self.addItem(item))
       }
     }
   }
