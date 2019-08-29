@@ -8,32 +8,47 @@ Simple vanilla JS library to handle shopping cart with
 common methods following
 [E-Com Plus cart object model](https://developers.e-com.plus/docs/api/#/store/carts/carts)
 
-## Getting started
+[Changelog](https://github.com/ecomclub/shopping-cart/blob/master/CHANGELOG.md)
 
-**This library is available for browser only**
+## Usage
 
-Include minified bundle via CDN:
+The `@ecomplus/shopping-cart` package can be used to persist
+and treat shopping cart data on E-Com Plus stores (and not only).
 
-```html
-<script src="https://cdn.jsdelivr.net/npm/@ecomplus/shopping-cart@0/dist/shopping-cart.min.js"></script>
-```
+It's available for both Node.js and browser environments.
 
-### With bundlers
+- [Get started](https://developers.e-com.plus/shopping-cart/module-@ecomplus_shopping-cart.html)
+- [Class reference](https://developers.e-com.plus/shopping-cart/EcomCart.html)
 
-If using `webpack` or `browserify` (or relateds),
-you can also install the
-[npm package](https://www.npmjs.com/package/@ecomplus/shopping-cart):
-
-```bash
-npm install --save @ecomplus/shopping-cart
-```
-
-And import the bundle file:
+### Example
 
 ```js
-import '@ecomplus/shopping-cart'
+const cart = new EcomCart()
+
+EcomCart.on('addItem', ({ data, item }) => {
+  console.log(data, item)
+  cart.clear()
+})
+
+cart.addItem({
+  _id: '12300000000000000000000f',
+  product_id: '123a5432109876543210cdef',
+  sku: 's-MP_2B4',
+  name: 'Mens Pique Polo Shirt',
+  quantity: 4,
+  price: 42.9,
+  keep_item_price: false
+})
+cart.increaseItemQnt('12300000000000000000000f', 3)
 ```
 
-## Documentation
+### Dependencies
 
-[`EcomCart` object and methods](https://developers.e-com.plus/shopping-cart/EcomCart.html)
+It requires and doesn't include:
+- [`@ecomplus/utils`](https://github.com/ecomclub/ecomplus-utils)
+- [`eventemitter3`](https://github.com/primus/eventemitter3)
+
+It'll be automatically imported if you're developing on Node.js
+environment or using a bundler such as Webpack,
+**in other case those libraries must be included manually on
+window scope**.
