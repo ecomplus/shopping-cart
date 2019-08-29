@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { _config } from '@ecomplus/utils'
+import { _config, randomObjectId } from '@ecomplus/utils'
 import emitter from './lib/emitter'
 
 import addItem from './methods/add-item'
@@ -70,12 +70,12 @@ const EcomCart = function (storeId, storageKey = _key, localStorage = _storage) 
   }
 
   // instance methods
-  this.addItem = addItem
-  this.addPoduct = addPoduct
-  this.increaseItemQnt = increaseItemQnt
-  this.removeItem = removeItem
-  this.save = save
-  this.clear = clear
+  this.addItem = (newItem, save) => addItem(self, newItem, save)
+  this.addPoduct = (product, variationId, qnt, save) => addPoduct(self, product, variationId, qnt, save)
+  this.increaseItemQnt = (itemId, quantity, save) => increaseItemQnt(self, quantity, itemId)
+  this.removeItem = (itemId, save) => removeItem(self, itemId, save)
+  this.save = () => save(self)
+  this.clear = () => clear(self)
 
   if (localStorage && storageKey) {
     // try to preset cart data from storage
@@ -93,6 +93,11 @@ const EcomCart = function (storeId, storageKey = _key, localStorage = _storage) 
         data.items.forEach(item => self.addItem(item))
       }
     }
+  }
+
+  if (!self.data._id) {
+    // generate new cart ID
+    self.data._id = randomObjectId()
   }
 }
 
