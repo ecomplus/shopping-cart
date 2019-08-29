@@ -2,7 +2,11 @@
   "name": "@ecomplus/shopping-cart",
   "version": "0.6.1-alpha.0",
   "description": "Simple vanilla JS library to handle shopping cart object",
-  "main": "dist/shopping-cart.min.js",
+  "main": "dist/ecom-cart.min.js",
+  "module": "src/index.js",
+  "browser": "dist/ecom-cart.min.js",
+  "jsdelivr": "dist/ecom-cart.root.min.js",
+  "unpkg": "dist/ecom-cart.root.min.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "serve": "webpack-dev-server",
