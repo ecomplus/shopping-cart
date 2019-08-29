@@ -1,5 +1,9 @@
 /* global EcomCart */
 
+EcomCart.on('addItem', ({ data, item }) => {
+  console.log(data, item)
+})
+
 const cart = new EcomCart()
 
 cart.addItem({
@@ -13,4 +17,3 @@ cart.addItem({
 })
 
 cart.increaseItemQnt('12300000000000000000000f', 3)
-console.log(cart)
