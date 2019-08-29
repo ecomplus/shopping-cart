@@ -2,7 +2,7 @@ import { randomObjectId } from '@ecomplus/utils'
 import fixItemQuantity from './../lib/fix-item-quantity'
 
 // add item to cart
-export default ({ cart, saveCart }, newItem, save = true) => {
+export default (self, newItem, save = true) => {
   // check required fields
   if (typeof newItem.product_id !== 'string' ||
     typeof newItem.quantity !== 'number' || !(newItem.quantity >= 0) ||
@@ -11,6 +11,7 @@ export default ({ cart, saveCart }, newItem, save = true) => {
     return null
   }
 
+  const { cart } = self
   let fixedItem
   for (let i = 0; i < cart.items.length; i++) {
     const item = cart.items[i]
@@ -40,7 +41,7 @@ export default ({ cart, saveCart }, newItem, save = true) => {
   }
 
   if (save) {
-    saveCart()
+    self.save()
   }
   return fixedItem
 }
@@ -59,6 +60,7 @@ export default ({ cart, saveCart }, newItem, save = true) => {
  * @example
 
 cart.addItem({
+  _id: '12300000000000000000000f',
   product_id: '123a5432109876543210cdef',
   sku: 's-MP_2B4',
   name: 'Mens Pique Polo Shirt',
