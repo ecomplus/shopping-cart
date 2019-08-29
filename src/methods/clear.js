@@ -1,6 +1,9 @@
+import emitter from './../lib/emitter'
+
 export default ({ cart, save }) => {
   // empty the items array and save
   cart.items = []
+  emitter('clear', { cart })
   return save()
 }
 

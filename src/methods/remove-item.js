@@ -1,3 +1,5 @@
+import emitter from './../lib/emitter'
+
 export default (self, itemId, save = true) => {
   // find respective item on list by ID
   const { cart } = self
@@ -8,6 +10,7 @@ export default (self, itemId, save = true) => {
       // remove from items array
       cart.items.splice(i, 1)
       cart.save()
+      emitter('removeItemQnt', { cart, item })
       return item
     }
   }

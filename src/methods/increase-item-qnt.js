@@ -1,8 +1,10 @@
 import fixItemQuantity from './../lib/fix-item-quantity'
+import emitter from './../lib/emitter'
 
 export default (self, itemId, quantity = 1, save = true) => {
+  const { cart } = self
   // find respective item on list by ID
-  const item = self.cart.items.find(({ _id }) => _id === itemId)
+  const item = cart.items.find(({ _id }) => _id === itemId)
   if (item) {
     item.quantity += quantity
     fixItemQuantity(item)
@@ -12,6 +14,7 @@ export default (self, itemId, quantity = 1, save = true) => {
   } else {
     return null
   }
+  emitter('increaseItemQnt', { cart, item })
   return item
 }
 

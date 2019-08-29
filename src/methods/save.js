@@ -1,3 +1,5 @@
+import emitter from './../lib/emitter'
+
 export default self => {
   const { cart, storageKey, localStorage } = self
   // fix cart subtotal first
@@ -9,6 +11,7 @@ export default self => {
   if (typeof localStorage === 'object' && localStorage) {
     localStorage.setItem(storageKey, JSON.stringify(cart))
   }
+  emitter('save', { cart })
   return self
 }
 

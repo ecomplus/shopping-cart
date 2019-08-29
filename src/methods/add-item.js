@@ -1,5 +1,6 @@
 import { randomObjectId } from '@ecomplus/utils'
 import fixItemQuantity from './../lib/fix-item-quantity'
+import emitter from './../lib/emitter'
 
 // add item to cart
 export default (self, newItem, save = true) => {
@@ -43,6 +44,7 @@ export default (self, newItem, save = true) => {
   if (save) {
     self.save()
   }
+  emitter('addItem', { cart, item: fixedItem })
   return fixedItem
 }
 
