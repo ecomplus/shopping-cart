@@ -9,7 +9,7 @@ const output = {
   libraryTarget: 'umd',
   libraryExport: 'default',
   path: path.resolve(__dirname, 'dist'),
-  filename: 'shopping-cart.min.js',
+  filename: 'ecom-cart.min.js',
   globalObject: 'this'
 }
 
