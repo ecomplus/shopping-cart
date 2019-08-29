@@ -1,6 +1,6 @@
 {
   "name": "@ecomplus/shopping-cart",
-  "version": "0.6.1-alpha.0",
+  "version": "0.6.1",
   "description": "Simple vanilla JS library to handle shopping cart object",
   "main": "dist/ecom-cart.min.js",
   "module": "src/index.js",
