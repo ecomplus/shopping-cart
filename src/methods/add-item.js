@@ -50,10 +50,10 @@ export default ({ cart, saveCart }, newItem, save = true) => {
  * @name EcomCart#addItem
  * @description Push new item to cart data and save.
  *
- * @param {item} newItem - New cart item object
+ * @param {object} newItem - New cart item object
  * @param {boolean} [save=true] - Save cart data
  *
- * @returns {item|null} Returns the saved item object (with ID) or null
+ * @returns {object|null} Returns the saved item object (with `_id`) or null
  * when new item object is invalid.
  *
  * @example
