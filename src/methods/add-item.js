@@ -44,7 +44,7 @@ export default (self, newItem, save = true) => {
   if (save) {
     self.save()
   }
-  emitter('addItem', { cart, item: fixedItem })
+  emitter.emit('addItem', { cart, item: fixedItem })
   return fixedItem
 }
 

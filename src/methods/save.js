@@ -11,7 +11,7 @@ export default self => {
   if (typeof localStorage === 'object' && localStorage) {
     localStorage.setItem(storageKey, JSON.stringify(cart))
   }
-  emitter('save', { cart })
+  emitter.emit('save', { cart })
   return self
 }
 

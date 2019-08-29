@@ -3,7 +3,7 @@ import emitter from './../lib/emitter'
 export default ({ cart, save }) => {
   // empty the items array and save
   cart.items = []
-  emitter('clear', { cart })
+  emitter.emit('clear', { cart })
   return save()
 }
 

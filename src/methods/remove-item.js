@@ -10,7 +10,7 @@ export default (self, itemId, save = true) => {
       // remove from items array
       cart.items.splice(i, 1)
       cart.save()
-      emitter('removeItemQnt', { cart, item })
+      emitter.emit('removeItemQnt', { cart, item })
       return item
     }
   }

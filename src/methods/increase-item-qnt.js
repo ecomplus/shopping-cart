@@ -14,7 +14,7 @@ export default (self, itemId, quantity = 1, save = true) => {
   } else {
     return null
   }
-  emitter('increaseItemQnt', { cart, item })
+  emitter.emit('increaseItemQnt', { cart, item })
   return item
 }
 
