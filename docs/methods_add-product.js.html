@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>methods/add-item.js - Documentation</title>
+    <title>methods/add-product.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">methods/add-item.js</h1>
+    <h1 class="page-title">methods/add-product.js</h1>
     
 
     
@@ -42,62 +42,52 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { randomObjectId } from '@ecomplus/utils'
-import fixItemQuantity from './../lib/fix-item-quantity'
-import emitter from './../lib/emitter'
+            <pre class="prettyprint source linenums"><code>import { price } from '@ecomplus/utils'
 
-// add item to cart
-export default (self, newItem, save = true) => {
-  // check required fields
-  if (typeof newItem.product_id !== 'string' ||
-    typeof newItem.quantity !== 'number' || !(newItem.quantity >= 0) ||
-    typeof newItem.price !== 'number' || !(newItem.price >= 0)) {
-    // trying to add invalid item object
-    return null
-  }
+export default ({ addItem }, product, variationId, quantity = 1, save = true) => {
+  // parse product object to item
+  const item = !variationId || !product.variations
+    ? product
+    : product.variations.find(({ _id }) => _id === variationId)
+  item.product_id = product._id
 
-  const { data } = self
-  let fixedItem
-  for (let i = 0; i &lt; data.items.length; i++) {
-    const item = data.items[i]
-    // check IDs
-    if (item.product_id === newItem.product_id &amp;&amp; item.variation_id === newItem.variation_id) {
-      // same product and variation
-      // update quantity and price
-      item.quantity += newItem.quantity
-      if (newItem.price) {
-        item.price = newItem.price
+  if (variationId) {
+    // handle selected variation object
+    item.variation_id = variationId
+    item.slug = product.slug
+    if (item.picture_id &amp;&amp; product.pictures) {
+      // variation specific picture
+      const pictures = product.pictures.filter(picture => {
+        return picture._id === item.picture_id
+      })
+      if (pictures.length) {
+        item.picture = pictures[0]
       }
-      if (newItem.final_price) {
-        item.final_price = newItem.final_price
-      }
-      fixedItem = fixItemQuantity(item)
     }
   }
 
-  if (!fixedItem) {
-    if (!newItem._id) {
-      // generate random ObjectID
-      newItem._id = randomObjectId()
-    }
-    // add item to cart
-    data.items.push(newItem)
-    fixedItem = fixItemQuantity(newItem)
+  if (!item.picture &amp;&amp; product.pictures) {
+    // use first product picture as default
+    item.picture = product.pictures[0]
   }
+  // fallback to product min quantity (when variation has not min quantity)
+  item.quantity = item.min_quantity || product.min_quantity || quantity
+  // defaults to product price when variation has no defined price
+  item.price = price(item) || price(product)
 
-  if (save) {
-    self.save()
-  }
-  emitter.emit('addItem', { data, item: fixedItem })
-  return fixedItem
+  // add to global cart and return fixed item object
+  return addItem(item)
 }
 
 /**
  * @method
- * @name EcomCart#addItem
- * @description Push new item to cart data and save.
+ * @name EcomCart#addProduct
+ * @description Parse product object to item, push to cart and save.
  *
- * @param {object} newItem - New cart item object
+ * @param {object} product -
+ * [Product object]{@link https://developers.e-com.plus/docs/api/#/store/products/products}
+ * @param {string} [variationId] - ID of selected variation if any
+ * @param {number} [quantity=1] - Item quantity added
  * @param {boolean} [save=true] - Save cart data
  *
  * @returns {object|null} Returns the saved item object (with `_id`) or null
@@ -105,14 +95,22 @@ export default (self, newItem, save = true) => {
  *
  * @example
 
-cart.addItem({
-  _id: '12300000000000000000000f',
-  product_id: '123a5432109876543210cdef',
+cart.addProduct({
+  _id: '123a5432109876543210cdef',
   sku: 's-MP_2B4',
+  commodity_type: 'physical',
   name: 'Mens Pique Polo Shirt',
-  quantity: 4,
+  slug: 'mens-pique-polo-shirt',
+  available: true,
+  visible: true,
   price: 42.9,
-  keep_item_price: false
+  price_effective_date: {
+    end: '2018-12-01T10:00:00.612Z'
+  },
+  base_price: 60,
+  currency_id: 'BRL',
+  currency_symbol: 'R$',
+  quantity: 100
 })
 
  */

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>methods/add-item.js - Documentation</title>
+    <title>methods/remove-item.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">methods/add-item.js</h1>
+    <h1 class="page-title">methods/remove-item.js</h1>
     
 
     
@@ -42,78 +42,39 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { randomObjectId } from '@ecomplus/utils'
-import fixItemQuantity from './../lib/fix-item-quantity'
-import emitter from './../lib/emitter'
+            <pre class="prettyprint source linenums"><code>import emitter from './../lib/emitter'
 
-// add item to cart
-export default (self, newItem, save = true) => {
-  // check required fields
-  if (typeof newItem.product_id !== 'string' ||
-    typeof newItem.quantity !== 'number' || !(newItem.quantity >= 0) ||
-    typeof newItem.price !== 'number' || !(newItem.price >= 0)) {
-    // trying to add invalid item object
-    return null
-  }
-
+export default (self, itemId, save = true) => {
+  // find respective item on list by ID
   const { data } = self
-  let fixedItem
   for (let i = 0; i &lt; data.items.length; i++) {
     const item = data.items[i]
-    // check IDs
-    if (item.product_id === newItem.product_id &amp;&amp; item.variation_id === newItem.variation_id) {
-      // same product and variation
-      // update quantity and price
-      item.quantity += newItem.quantity
-      if (newItem.price) {
-        item.price = newItem.price
-      }
-      if (newItem.final_price) {
-        item.final_price = newItem.final_price
-      }
-      fixedItem = fixItemQuantity(item)
+    if (item._id === itemId) {
+      // item found
+      // remove from items array
+      data.items.splice(i, 1)
+      data.save()
+      emitter.emit('removeItemQnt', { data, item })
+      return item
     }
   }
-
-  if (!fixedItem) {
-    if (!newItem._id) {
-      // generate random ObjectID
-      newItem._id = randomObjectId()
-    }
-    // add item to cart
-    data.items.push(newItem)
-    fixedItem = fixItemQuantity(newItem)
-  }
-
-  if (save) {
-    self.save()
-  }
-  emitter.emit('addItem', { data, item: fixedItem })
-  return fixedItem
+  return null
 }
 
 /**
  * @method
- * @name EcomCart#addItem
- * @description Push new item to cart data and save.
+ * @name EcomCart#removeItem
+ * @description Remove specific item from cart by ID.
  *
- * @param {object} newItem - New cart item object
+ * @param {string} itemId - The unique object ID of item
  * @param {boolean} [save=true] - Save cart data
  *
- * @returns {object|null} Returns the saved item object (with `_id`) or null
- * when new item object is invalid.
+ * @returns {object|null} Returns the removed item object or null
+ * when item not found.
  *
  * @example
 
-cart.addItem({
-  _id: '12300000000000000000000f',
-  product_id: '123a5432109876543210cdef',
-  sku: 's-MP_2B4',
-  name: 'Mens Pique Polo Shirt',
-  quantity: 4,
-  price: 42.9,
-  keep_item_price: false
-})
+cart.removeItem('12300000000000000000000f')
 
  */
 </code></pre>
