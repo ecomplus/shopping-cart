@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/ecomclub/shopping-cart/compare/v0.6.1...v0.6.2) (2019-09-12)
+
+
+### Bug Fixes
+
+* **remove-item:** fix event and self.save() on removeItem method ([59d1e3f](https://github.com/ecomclub/shopping-cart/commit/59d1e3f))
+
 ### [0.6.1](https://github.com/ecomclub/shopping-cart/compare/v0.6.1-alpha.0...v0.6.1) (2019-08-29)
 
 
