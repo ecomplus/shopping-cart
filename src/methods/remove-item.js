@@ -9,8 +9,8 @@ export default (self, itemId, save = true) => {
       // item found
       // remove from items array
       data.items.splice(i, 1)
-      data.save()
-      emitter.emit('removeItemQnt', { data, item })
+      self.save()
+      emitter.emit('removeItem', { data, item })
       return item
     }
   }
