@@ -56,7 +56,7 @@ module.exports = devMode
         eventemitter3: {
           commonjs: 'eventemitter3',
           commonjs2: 'eventemitter3',
-          root: 'EventEmitter'
+          root: 'EventEmitter3'
         },
         '@ecomplus/utils': {
           commonjs: '@ecomplus/utils',
