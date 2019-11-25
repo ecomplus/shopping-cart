@@ -43,9 +43,13 @@ const config = {
 module.exports = devMode
   // single config object for dev server
   ? config
-  // production outputs with and without polyfill
+
+  // multiple production outputs
   : [
+    // without dependencies/polyfill
     config,
+
+    // without dependencies but with polyfill
     {
       ...config,
       output: {
@@ -69,5 +73,15 @@ module.exports = devMode
           root: 'ecomClient'
         }
       }
+    },
+
+    // full bundle with polyfill and dependencies
+    {
+      ...config,
+      output: {
+        ...output,
+        filename: output.filename.replace('.min.js', '.bundle.min.js')
+      },
+      externals: ''
     }
   ]
