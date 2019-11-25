@@ -1,10 +1,15 @@
-import emitter from './../lib/emitter'
-
-export default ({ data, save }) => {
+export default (self, emitter, [canSave = true]) => {
+  const { data, save } = self
   // empty the items array and save
   data.items = []
+  if (data.subtotal) {
+    data.subtotal = 0
+  }
   emitter.emit('clear', { data })
-  return save()
+  if (canSave) {
+    save(false)
+  }
+  return self
 }
 
 /**

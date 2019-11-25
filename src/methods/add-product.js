@@ -1,6 +1,6 @@
 import { price } from '@ecomplus/utils'
 
-export default ({ addItem }, product, variationId, quantity = 1, save = true) => {
+export default ({ addItem }, emitter, [product, variationId, quantity = 1, canSave = true]) => {
   // parse product object to item
   const item = !variationId || !product.variations
     ? product
@@ -32,7 +32,7 @@ export default ({ addItem }, product, variationId, quantity = 1, save = true) =>
   item.price = price(item) || price(product)
 
   // add to global cart and return fixed item object
-  return addItem(item)
+  return addItem(item, canSave)
 }
 
 /**
@@ -44,7 +44,7 @@ export default ({ addItem }, product, variationId, quantity = 1, save = true) =>
  * [Product object]{@link https://developers.e-com.plus/docs/api/#/store/products/products}
  * @param {string} [variationId] - ID of selected variation if any
  * @param {number} [quantity=1] - Item quantity added
- * @param {boolean} [save=true] - Save cart data
+ * @param {boolean} [canSave=true] - Save cart data
  *
  * @returns {object|null} Returns the saved item object (with `_id`) or null
  * when new item object is invalid.

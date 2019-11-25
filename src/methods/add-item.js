@@ -1,9 +1,9 @@
 import { randomObjectId } from '@ecomplus/utils'
 import fixItemQuantity from './../lib/fix-item-quantity'
-import emitter from './../lib/emitter'
+import fixSubtotal from './../lib/fix-subtotal'
 
 // add item to cart
-export default (self, newItem, save = true) => {
+export default ({ data, save }, emitter, [newItem, canSave = true]) => {
   // check required fields
   if (typeof newItem.product_id !== 'string' ||
     typeof newItem.quantity !== 'number' || !(newItem.quantity >= 0) ||
@@ -12,7 +12,6 @@ export default (self, newItem, save = true) => {
     return null
   }
 
-  const { data } = self
   let fixedItem
   for (let i = 0; i < data.items.length; i++) {
     const item = data.items[i]
@@ -41,10 +40,14 @@ export default (self, newItem, save = true) => {
     fixedItem = fixItemQuantity(newItem)
   }
 
-  if (save) {
-    self.save()
-  }
+  // fix cart subtotal and emit event with updated cart data
+  fixSubtotal(data)
   emitter.emit('addItem', { data, item: fixedItem })
+  if (canSave) {
+    // also saves to local storage
+    save(false)
+  }
+
   return fixedItem
 }
 
@@ -54,7 +57,7 @@ export default (self, newItem, save = true) => {
  * @description Push new item to cart data and save.
  *
  * @param {object} newItem - New cart item object
- * @param {boolean} [save=true] - Save cart data
+ * @param {boolean} [canSave=true] - Save cart data
  *
  * @returns {object|null} Returns the saved item object (with `_id`) or null
  * when new item object is invalid.

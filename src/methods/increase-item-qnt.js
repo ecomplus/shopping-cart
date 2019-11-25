@@ -1,20 +1,19 @@
 import fixItemQuantity from './../lib/fix-item-quantity'
-import emitter from './../lib/emitter'
+import fixSubtotal from './../lib/fix-subtotal'
 
-export default (self, itemId, quantity = 1, save = true) => {
-  const { data } = self
+export default ({ data, save }, emitter, [itemId, quantity = 1, canSave = true]) => {
   // find respective item on list by ID
   const item = data.items.find(({ _id }) => _id === itemId)
-  if (item) {
-    item.quantity += quantity
-    fixItemQuantity(item)
-    if (save) {
-      self.save()
-    }
-  } else {
+  if (!item) {
     return null
   }
+  item.quantity += quantity
+  fixItemQuantity(item)
+  fixSubtotal(data)
   emitter.emit('increaseItemQnt', { data, item })
+  if (canSave) {
+    save(false)
+  }
   return item
 }
 
@@ -25,7 +24,7 @@ export default (self, itemId, quantity = 1, save = true) => {
  *
  * @param {string} itemId - The unique object ID of item
  * @param {integer} [quantity=1] - Quantity to increase (can be negative)
- * @param {boolean} [save=true] - Save cart data
+ * @param {boolean} [canSave=true] - Save cart data
  *
  * @returns {object|null} Returns the updated item object or null
  * when item not found.

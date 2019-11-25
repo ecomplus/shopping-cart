@@ -1,16 +1,18 @@
-import emitter from './../lib/emitter'
+import fixSubtotal from './../lib/fix-subtotal'
 
-export default (self, itemId, save = true) => {
+export default ({ data, save }, emitter, [itemId, canSave = true]) => {
   // find respective item on list by ID
-  const { data } = self
   for (let i = 0; i < data.items.length; i++) {
     const item = data.items[i]
     if (item._id === itemId) {
       // item found
       // remove from items array
       data.items.splice(i, 1)
-      self.save()
+      fixSubtotal(data)
       emitter.emit('removeItem', { data, item })
+      if (canSave) {
+        save(false)
+      }
       return item
     }
   }
@@ -23,7 +25,7 @@ export default (self, itemId, save = true) => {
  * @description Remove specific item from cart by ID.
  *
  * @param {string} itemId - The unique object ID of item
- * @param {boolean} [save=true] - Save cart data
+ * @param {boolean} [canSave=true] - Save cart data
  *
  * @returns {object|null} Returns the removed item object or null
  * when item not found.

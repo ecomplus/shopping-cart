@@ -1,12 +1,10 @@
-import emitter from './../lib/emitter'
+import fixSubtotal from './../lib/fix-subtotal'
 
-export default self => {
+export default (self, emitter, [canFixSubtotal = true]) => {
   const { data, storageKey, localStorage } = self
-  // fix cart subtotal first
-  data.subtotal = 0
-  for (let i = 0; i < data.items.length; i++) {
-    const item = data.items[i]
-    data.subtotal += item.quantity * (item.final_price || item.price)
+  if (canFixSubtotal) {
+    // fix cart subtotal first
+    fixSubtotal(data)
   }
   if (typeof localStorage === 'object' && localStorage) {
     localStorage.setItem(storageKey, JSON.stringify(data))
