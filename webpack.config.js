@@ -5,7 +5,7 @@ const path = require('path')
 
 // preset default output object
 const output = {
-  library: 'EcomCart',
+  library: 'ecomCart',
   libraryTarget: 'umd',
   libraryExport: 'default',
   path: path.resolve(__dirname, 'dist'),
