@@ -1,5 +1,5 @@
 import { $ecomConfig, randomObjectId } from '@ecomplus/utils'
-import EventEmitter from 'eventemitter3'
+import * as EventEmitter from 'eventemitter3'
 
 import addItem from './methods/add-item'
 import addPoduct from './methods/add-product'
