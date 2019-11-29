@@ -1,13 +1,14 @@
 /* global ecomCart */
 
 ecomCart.on('addItem', ({ data, item }) => {
-  console.log(data, item)
+  console.log('New item added to cart:', item)
+  console.log('Current cart data:', data)
 })
 
 const customCart = new ecomCart.Constructor()
 console.log(customCart)
 
-customCart.addItem({
+ecomCart.addItem({
   _id: '12300000000000000000000f',
   product_id: '123a5432109876543210cdef',
   sku: 's-MP_2B4',
@@ -17,4 +18,4 @@ customCart.addItem({
   keep_item_price: false
 })
 
-customCart.increaseItemQnt('12300000000000000000000f', 3)
+ecomCart.increaseItemQnt('12300000000000000000000f', 3)
