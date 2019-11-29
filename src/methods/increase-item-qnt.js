@@ -10,11 +10,19 @@ export default ({ data, save }, emitter, [itemId, quantity = 1, canSave = true])
 
   fixItemQuantity(item)
   fixSubtotal(data)
+
+  /**
+   * @event EcomCart#increaseItemQnt
+   * @type {object}
+   * @property {object} data - Shopping cart data
+   * @property {object} item - Cart item changed
+   * @example ecomCart.on('increaseItemQnt', ({ data, item }) => { console.log(data, item) })
+   */
   emitter.emit('increaseItemQnt', { data, item })
+
   if (canSave) {
     save(false)
   }
-
   return item
 }
 

@@ -1,32 +1,5 @@
 import { price } from '@ecomplus/utils'
 
-export default ({ addItem }, emitter, [product, variationId, quantity = 1, canSave = true]) => {
-  const item = !variationId || !product.variations
-    ? product : product.variations.find(({ _id }) => _id === variationId)
-  item.product_id = product._id
-
-  if (variationId) {
-    item.variation_id = variationId
-    item.slug = product.slug
-    if (item.picture_id && product.pictures) {
-      const pictures = product.pictures.filter(picture => {
-        return picture._id === item.picture_id
-      })
-      if (pictures.length) {
-        item.picture = pictures[0]
-      }
-    }
-  }
-
-  if (!item.picture && product.pictures) {
-    item.picture = product.pictures[0]
-  }
-  item.quantity = item.min_quantity || product.min_quantity || quantity
-  item.price = price(item) || price(product)
-
-  return addItem(item, canSave)
-}
-
 /**
  * @method
  * @name EcomCart#addProduct
@@ -62,3 +35,30 @@ ecomCart.addProduct({
 })
 
  */
+
+export default ({ addItem }, emitter, [product, variationId, quantity = 1, canSave = true]) => {
+  const item = !variationId || !product.variations
+    ? product : product.variations.find(({ _id }) => _id === variationId)
+  item.product_id = product._id
+
+  if (variationId) {
+    item.variation_id = variationId
+    item.slug = product.slug
+    if (item.picture_id && product.pictures) {
+      const pictures = product.pictures.filter(picture => {
+        return picture._id === item.picture_id
+      })
+      if (pictures.length) {
+        item.picture = pictures[0]
+      }
+    }
+  }
+
+  if (!item.picture && product.pictures) {
+    item.picture = product.pictures[0]
+  }
+  item.quantity = item.min_quantity || product.min_quantity || quantity
+  item.price = price(item) || price(product)
+
+  return addItem(item, canSave)
+}

@@ -89,6 +89,13 @@ const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorag
     const result = method(ecomCart, emitter, args)
     if (result && emitChange) {
       const { data } = ecomCart
+
+      /**
+       * @event EcomCart#change
+       * @type {object}
+       * @property {object} data - Shopping cart data
+       * @example ecomCart.on('change', ({ data }) => { console.log(data.items) })
+       */
       emitter.emit('change', { data })
     }
     return result

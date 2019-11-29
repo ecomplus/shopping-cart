@@ -1,19 +1,5 @@
 import fixSubtotal from './../lib/fix-subtotal'
 
-export default (self, emitter, [canFixSubtotal = true]) => {
-  const { data, storageKey, localStorage } = self
-
-  if (canFixSubtotal) {
-    fixSubtotal(data)
-  }
-  if (typeof localStorage === 'object' && localStorage) {
-    localStorage.setItem(storageKey, JSON.stringify(data))
-  }
-  emitter.emit('save', { data })
-
-  return self
-}
-
 /**
  * @method
  * @name EcomCart#save
@@ -28,3 +14,24 @@ export default (self, emitter, [canFixSubtotal = true]) => {
 ecomCart.save()
 
  */
+
+export default (self, emitter, [canFixSubtotal = true]) => {
+  const { data, storageKey, localStorage } = self
+
+  if (canFixSubtotal) {
+    fixSubtotal(data)
+  }
+  if (typeof localStorage === 'object' && localStorage) {
+    localStorage.setItem(storageKey, JSON.stringify(data))
+  }
+
+  /**
+   * @event EcomCart#save
+   * @type {object}
+   * @property {object} data - Shopping cart data
+   * @example ecomCart.on('save', ({ data }) => { console.log(data.subtotal) })
+   */
+  emitter.emit('save', { data })
+
+  return self
+}

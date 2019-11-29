@@ -1,18 +1,3 @@
-export default (self, emitter, [canSave = true]) => {
-  const { data, save } = self
-
-  data.items = []
-  if (data.subtotal) {
-    data.subtotal = 0
-  }
-  emitter.emit('clear', { data })
-  if (canSave) {
-    save(false)
-  }
-
-  return self
-}
-
 /**
  * @method
  * @name EcomCart#clear
@@ -27,3 +12,25 @@ export default (self, emitter, [canSave = true]) => {
 ecomCart.clear()
 
  */
+
+export default (self, emitter, [canSave = true]) => {
+  const { data, save } = self
+
+  data.items = []
+  if (data.subtotal) {
+    data.subtotal = 0
+  }
+
+  /**
+   * @event EcomCart#clear
+   * @type {object}
+   * @property {object} data - Shopping cart data
+   * @example ecomCart.on('clear', ({ data }) => { console.log(data.subtotal === 0) })
+   */
+  emitter.emit('clear', { data })
+
+  if (canSave) {
+    save(false)
+  }
+  return self
+}
