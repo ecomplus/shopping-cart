@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EcomCart.html">EcomCart</a><ul class='methods'><li data-type='method'><a href="EcomCart.html#addItem">addItem</a></li><li data-type='method'><a href="EcomCart.html#addProduct">addProduct</a></li><li data-type='method'><a href="EcomCart.html#clear">clear</a></li><li data-type='method'><a href="EcomCart.html#increaseItemQnt">increaseItemQnt</a></li><li data-type='method'><a href="EcomCart.html#removeItem">removeItem</a></li><li data-type='method'><a href="EcomCart.html#save">save</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-@ecomplus_shopping-cart.html">@ecomplus/shopping-cart</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EcomCart.html">EcomCart</a><ul class='methods'><li data-type='method'><a href="EcomCart.html#addItem">addItem</a></li><li data-type='method'><a href="EcomCart.html#addProduct">addProduct</a></li><li data-type='method'><a href="EcomCart.html#clear">clear</a></li><li data-type='method'><a href="EcomCart.html#increaseItemQnt">increaseItemQnt</a></li><li data-type='method'><a href="EcomCart.html#removeItem">removeItem</a></li><li data-type='method'><a href="EcomCart.html#save">save</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-@ecomplus_shopping-cart.html">@ecomplus/shopping-cart</a></li></ul><h3>Events</h3><ul><li><a href="EcomCart.html#event:addItem">addItem</a></li><li><a href="EcomCart.html#event:change">change</a></li><li><a href="EcomCart.html#event:clear">clear</a></li><li><a href="EcomCart.html#event:increaseItemQnt">increaseItemQnt</a></li><li><a href="EcomCart.html#event:removeItem">removeItem</a></li><li><a href="EcomCart.html#event:save">save</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ecomCart">ecomCart</a></li></ul>
 </nav>
 
 <div id="main">
@@ -44,26 +44,47 @@
         <article>
             <pre class="prettyprint source linenums"><code>import { randomObjectId } from '@ecomplus/utils'
 import fixItemQuantity from './../lib/fix-item-quantity'
-import emitter from './../lib/emitter'
+import fixSubtotal from './../lib/fix-subtotal'
 
-// add item to cart
-export default (self, newItem, save = true) => {
-  // check required fields
-  if (typeof newItem.product_id !== 'string' ||
+/**
+ * @method
+ * @name EcomCart#addItem
+ * @description Push new item to cart data and save.
+ *
+ * @param {object} newItem - New cart item object valid for
+ * {@link https://developers.e-com.plus/docs/api/#/store/carts/carts E-Com Plus `cart.items`}
+ * @param {boolean} [canSave=true] - Save cart data
+ *
+ * @returns {object|null} Returns the saved item object (with `_id`) or null
+ * when new item object is invalid.
+ *
+ * @example
+
+ecomCart.addItem({
+  _id: '12300000000000000000000f',
+  product_id: '123a5432109876543210cdef',
+  sku: 's-MP_2B4',
+  name: 'Mens Pique Polo Shirt',
+  quantity: 4,
+  price: 42.9,
+  keep_item_price: false
+})
+
+ */
+
+export default ({ data, save }, emitter, [newItem, canSave = false]) => {
+  if (
+    typeof newItem.product_id !== 'string' ||
     typeof newItem.quantity !== 'number' || !(newItem.quantity >= 0) ||
-    typeof newItem.price !== 'number' || !(newItem.price >= 0)) {
-    // trying to add invalid item object
+    typeof newItem.price !== 'number' || !(newItem.price >= 0)
+  ) {
     return null
   }
 
-  const { data } = self
   let fixedItem
   for (let i = 0; i &lt; data.items.length; i++) {
     const item = data.items[i]
-    // check IDs
     if (item.product_id === newItem.product_id &amp;&amp; item.variation_id === newItem.variation_id) {
-      // same product and variation
-      // update quantity and price
       item.quantity += newItem.quantity
       if (newItem.price) {
         item.price = newItem.price
@@ -77,45 +98,27 @@ export default (self, newItem, save = true) => {
 
   if (!fixedItem) {
     if (!newItem._id) {
-      // generate random ObjectID
       newItem._id = randomObjectId()
     }
-    // add item to cart
     data.items.push(newItem)
     fixedItem = fixItemQuantity(newItem)
   }
+  fixSubtotal(data)
 
-  if (save) {
-    self.save()
-  }
+  /**
+   * @event EcomCart#addItem
+   * @type {object}
+   * @property {object} data - Shopping cart data
+   * @property {object} item - Item added to cart
+   * @example ecomCart.on('addItem', ({ data, item }) => { console.log(data, item) })
+   */
   emitter.emit('addItem', { data, item: fixedItem })
+
+  if (canSave) {
+    save(false)
+  }
   return fixedItem
 }
-
-/**
- * @method
- * @name EcomCart#addItem
- * @description Push new item to cart data and save.
- *
- * @param {object} newItem - New cart item object
- * @param {boolean} [save=true] - Save cart data
- *
- * @returns {object|null} Returns the saved item object (with `_id`) or null
- * when new item object is invalid.
- *
- * @example
-
-cart.addItem({
-  _id: '12300000000000000000000f',
-  product_id: '123a5432109876543210cdef',
-  sku: 's-MP_2B4',
-  name: 'Mens Pique Polo Shirt',
-  quantity: 4,
-  price: 42.9,
-  keep_item_price: false
-})
-
- */
 </code></pre>
         </article>
     </section>
@@ -130,7 +133,7 @@ cart.addItem({
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 29 2019 20:54:19 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Fri Nov 29 2019 16:26:42 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

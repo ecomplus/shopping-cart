@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EcomCart.html">EcomCart</a><ul class='methods'><li data-type='method'><a href="EcomCart.html#addItem">addItem</a></li><li data-type='method'><a href="EcomCart.html#addProduct">addProduct</a></li><li data-type='method'><a href="EcomCart.html#clear">clear</a></li><li data-type='method'><a href="EcomCart.html#increaseItemQnt">increaseItemQnt</a></li><li data-type='method'><a href="EcomCart.html#removeItem">removeItem</a></li><li data-type='method'><a href="EcomCart.html#save">save</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-@ecomplus_shopping-cart.html">@ecomplus/shopping-cart</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EcomCart.html">EcomCart</a><ul class='methods'><li data-type='method'><a href="EcomCart.html#addItem">addItem</a></li><li data-type='method'><a href="EcomCart.html#addProduct">addProduct</a></li><li data-type='method'><a href="EcomCart.html#clear">clear</a></li><li data-type='method'><a href="EcomCart.html#increaseItemQnt">increaseItemQnt</a></li><li data-type='method'><a href="EcomCart.html#removeItem">removeItem</a></li><li data-type='method'><a href="EcomCart.html#save">save</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-@ecomplus_shopping-cart.html">@ecomplus/shopping-cart</a></li></ul><h3>Events</h3><ul><li><a href="EcomCart.html#event:addItem">addItem</a></li><li><a href="EcomCart.html#event:change">change</a></li><li><a href="EcomCart.html#event:clear">clear</a></li><li><a href="EcomCart.html#event:increaseItemQnt">increaseItemQnt</a></li><li><a href="EcomCart.html#event:removeItem">removeItem</a></li><li><a href="EcomCart.html#event:save">save</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ecomCart">ecomCart</a></li></ul>
 </nav>
 
 <div id="main">
@@ -71,7 +71,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line111">line 111</a>
+        <a href="constructor.js.html">constructor.js</a>, <a href="constructor.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -124,11 +124,12 @@
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>const cart = new EcomCart()</code></pre>
+    <pre class="prettyprint"><code>// Default instance
+const ecomCart = new EcomCart()</code></pre>
 
-    <pre class="prettyprint"><code>// Defining Store ID other than the configured on `ecomUtils._config`
+    <pre class="prettyprint"><code>// Defining Store ID other than the configured on `$ecomConfig`
 const storeId = 2000
-const cart = new EcomCart(storeId)</code></pre>
+const customEcomCart = new EcomCart(storeId)</code></pre>
 
 
 
@@ -189,7 +190,7 @@ const cart = new EcomCart(storeId)</code></pre>
             
                 <td class="default">
                 
-                    <code>_config.get('store_id')</code>
+                    <code>$ecomConfig.get('store_id')</code>
                 
                 </td>
             
@@ -231,12 +232,12 @@ const cart = new EcomCart(storeId)</code></pre>
             
                 <td class="default">
                 
-                    <code>'ecomShoppingCart'</code>
+                    <code>ecomShoppingCart</code>
                 
                 </td>
             
 
-            <td class="description last">Item key to persist search history data</td>
+            <td class="description last">Item key to persist cart data</td>
         </tr>
 
     
@@ -321,7 +322,7 @@ const cart = new EcomCart(storeId)</code></pre>
 
         
             
-<h4 class="name" id="data"><span class="type-signature"></span>data<span class="type-signature"> :array.&lt;string></span></h4>
+<h4 class="name" id=".ecomCart.Constructor"><span class="type-signature">(static) </span>ecomCart.Constructor<span class="type-signature"> :function</span></h4>
 
 
 
@@ -332,7 +333,87 @@ const cart = new EcomCart(storeId)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line63">line 63</a>
+        <a href="constructor.js.html">constructor.js</a>, <a href="constructor.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="EcomCart.html">EcomCart</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Construct a new shopping cart instance object.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".ecomCart.data"><span class="type-signature">(static) </span>ecomCart.data<span class="type-signature"> :object</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constructor.js.html">constructor.js</a>, <a href="constructor.js.html#line76">line 76</a>
     </li></ul></dd>
     
 
@@ -369,10 +450,109 @@ const cart = new EcomCart(storeId)</code></pre>
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Cart object ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>items</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array.&lt;object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">List of cart items</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subtotal</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Cart subtotal value</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
 
 
 <div class="description">
-    Shopping cart data object.
+    Shopping cart data following
+<a href="https://developers.e-com.plus/docs/api/#/store/carts/carts">E-Com Plus cart object model</a>.
 </div>
 
 
@@ -381,7 +561,7 @@ const cart = new EcomCart(storeId)</code></pre>
     <ul>
         <li>
             
-<span class="param-type">array.&lt;string></span>
+<span class="param-type">object</span>
 
 
         </li>
@@ -394,7 +574,7 @@ const cart = new EcomCart(storeId)</code></pre>
 
         
             
-<h4 class="name" id="localStorage"><span class="type-signature"></span>localStorage<span class="type-signature"> :object</span></h4>
+<h4 class="name" id=".ecomCart.localStorage"><span class="type-signature">(static) </span>ecomCart.localStorage<span class="type-signature"> :object</span></h4>
 
 
 
@@ -405,7 +585,7 @@ const cart = new EcomCart(storeId)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line56">line 56</a>
+        <a href="constructor.js.html">constructor.js</a>, <a href="constructor.js.html#line65">line 65</a>
     </li></ul></dd>
     
 
@@ -467,7 +647,7 @@ const cart = new EcomCart(storeId)</code></pre>
 
         
             
-<h4 class="name" id="storageKey"><span class="type-signature"></span>storageKey<span class="type-signature"> :string|null</span></h4>
+<h4 class="name" id=".ecomCart.storageKey"><span class="type-signature">(static) </span>ecomCart.storageKey<span class="type-signature"> :string|null</span></h4>
 
 
 
@@ -478,7 +658,7 @@ const cart = new EcomCart(storeId)</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line48">line 48</a>
+        <a href="constructor.js.html">constructor.js</a>, <a href="constructor.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -518,7 +698,7 @@ const cart = new EcomCart(storeId)</code></pre>
 
 
 <div class="description">
-    Item key to handle persistent JSON <a href="EcomCart.html#data">EcomCart#data</a>
+    Item key to handle persistent JSON EcomCart#data
 with localStorage.
 </div>
 
@@ -544,7 +724,7 @@ with localStorage.
 
         
             
-<h4 class="name" id="storeId"><span class="type-signature"></span>storeId<span class="type-signature"> :number</span></h4>
+<h4 class="name" id=".ecomCart.storeId"><span class="type-signature">(static) </span>ecomCart.storeId<span class="type-signature"> :number</span></h4>
 
 
 
@@ -555,7 +735,7 @@ with localStorage.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line41">line 41</a>
+        <a href="constructor.js.html">constructor.js</a>, <a href="constructor.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -626,7 +806,7 @@ with localStorage.
 
     
 
-    <h4 class="name" id="addItem"><span class="type-signature"></span>addItem<span class="signature">(newItem, save<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object|null}</span></h4>
+    <h4 class="name" id="addItem"><span class="type-signature"></span>addItem<span class="signature">(newItem, canSave<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object|null}</span></h4>
 
     
 
@@ -638,7 +818,7 @@ with localStorage.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="methods_add-item.js.html">methods/add-item.js</a>, <a href="methods_add-item.js.html#line51">line 51</a>
+        <a href="methods_add-item.js.html">methods/add-item.js</a>, <a href="methods_add-item.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -691,7 +871,7 @@ with localStorage.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>cart.addItem({
+    <pre class="prettyprint"><code>ecomCart.addItem({
   _id: '12300000000000000000000f',
   product_id: '123a5432109876543210cdef',
   sku: 's-MP_2B4',
@@ -761,14 +941,15 @@ with localStorage.
                 </td>
             
 
-            <td class="description last">New cart item object</td>
+            <td class="description last">New cart item object valid for
+<a href="https://developers.e-com.plus/docs/api/#/store/carts/carts">E-Com Plus `cart.items`</a></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>save</code></td>
+                <td class="name"><code>canSave</code></td>
             
 
             <td class="type">
@@ -856,7 +1037,7 @@ when new item object is invalid.
 
     
 
-    <h4 class="name" id="addProduct"><span class="type-signature"></span>addProduct<span class="signature">(product, variationId<span class="signature-attributes">opt</span>, quantity<span class="signature-attributes">opt</span>, save<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object|null}</span></h4>
+    <h4 class="name" id="addProduct"><span class="type-signature"></span>addProduct<span class="signature">(product, variationId<span class="signature-attributes">opt</span>, quantity<span class="signature-attributes">opt</span>, canSave<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object|null}</span></h4>
 
     
 
@@ -868,7 +1049,7 @@ when new item object is invalid.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="methods_add-product.js.html">methods/add-product.js</a>, <a href="methods_add-product.js.html#line38">line 38</a>
+        <a href="methods_add-product.js.html">methods/add-product.js</a>, <a href="methods_add-product.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -921,7 +1102,7 @@ when new item object is invalid.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>cart.addProduct({
+    <pre class="prettyprint"><code>ecomCart.addProduct({
   _id: '123a5432109876543210cdef',
   sku: 's-MP_2B4',
   commodity_type: 'physical',
@@ -1082,7 +1263,7 @@ when new item object is invalid.
 
         <tr>
             
-                <td class="name"><code>save</code></td>
+                <td class="name"><code>canSave</code></td>
             
 
             <td class="type">
@@ -1170,7 +1351,7 @@ when new item object is invalid.
 
     
 
-    <h4 class="name" id="clear"><span class="type-signature"></span>clear<span class="signature">()</span><span class="type-signature"> &rarr; {self}</span></h4>
+    <h4 class="name" id="clear"><span class="type-signature"></span>clear<span class="signature">(canSave<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {self}</span></h4>
 
     
 
@@ -1182,7 +1363,7 @@ when new item object is invalid.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="methods_clear.js.html">methods/clear.js</a>, <a href="methods_clear.js.html#line10">line 10</a>
+        <a href="methods_clear.js.html">methods/clear.js</a>, <a href="methods_clear.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -1235,9 +1416,78 @@ when new item object is invalid.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>cart.clear()</code></pre>
+    <pre class="prettyprint"><code>ecomCart.clear()</code></pre>
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>canSave</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>true</code>
+                
+                </td>
+            
+
+            <td class="description last">Save empty cart to local storage</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -1280,7 +1530,7 @@ when new item object is invalid.
 
     
 
-    <h4 class="name" id="increaseItemQnt"><span class="type-signature"></span>increaseItemQnt<span class="signature">(itemId, quantity<span class="signature-attributes">opt</span>, save<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object|null}</span></h4>
+    <h4 class="name" id="increaseItemQnt"><span class="type-signature"></span>increaseItemQnt<span class="signature">(itemId, quantity<span class="signature-attributes">opt</span>, canSave<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object|null}</span></h4>
 
     
 
@@ -1292,7 +1542,7 @@ when new item object is invalid.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="methods_increase-item-qnt.js.html">methods/increase-item-qnt.js</a>, <a href="methods_increase-item-qnt.js.html#line21">line 21</a>
+        <a href="methods_increase-item-qnt.js.html">methods/increase-item-qnt.js</a>, <a href="methods_increase-item-qnt.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -1345,7 +1595,7 @@ when new item object is invalid.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>cart.increaseItemQnt('12300000000000000000000f', 3)</code></pre>
+    <pre class="prettyprint"><code>ecomCart.increaseItemQnt('12300000000000000000000f', 3)</code></pre>
 
 
 
@@ -1453,7 +1703,7 @@ when new item object is invalid.
 
         <tr>
             
-                <td class="name"><code>save</code></td>
+                <td class="name"><code>canSave</code></td>
             
 
             <td class="type">
@@ -1541,7 +1791,7 @@ when item not found.
 
     
 
-    <h4 class="name" id="removeItem"><span class="type-signature"></span>removeItem<span class="signature">(itemId, save<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object|null}</span></h4>
+    <h4 class="name" id="removeItem"><span class="type-signature"></span>removeItem<span class="signature">(itemId, canSave<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object|null}</span></h4>
 
     
 
@@ -1553,7 +1803,7 @@ when item not found.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="methods_remove-item.js.html">methods/remove-item.js</a>, <a href="methods_remove-item.js.html#line20">line 20</a>
+        <a href="methods_remove-item.js.html">methods/remove-item.js</a>, <a href="methods_remove-item.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -1606,7 +1856,7 @@ when item not found.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>cart.removeItem('12300000000000000000000f')</code></pre>
+    <pre class="prettyprint"><code>ecomCart.removeItem('12300000000000000000000f')</code></pre>
 
 
 
@@ -1675,7 +1925,7 @@ when item not found.
 
         <tr>
             
-                <td class="name"><code>save</code></td>
+                <td class="name"><code>canSave</code></td>
             
 
             <td class="type">
@@ -1763,7 +2013,7 @@ when item not found.
 
     
 
-    <h4 class="name" id="save"><span class="type-signature"></span>save<span class="signature">()</span><span class="type-signature"> &rarr; {self}</span></h4>
+    <h4 class="name" id="save"><span class="type-signature"></span>save<span class="signature">(canFixSubtotal<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {self}</span></h4>
 
     
 
@@ -1775,7 +2025,7 @@ when item not found.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="methods_save.js.html">methods/save.js</a>, <a href="methods_save.js.html#line18">line 18</a>
+        <a href="methods_save.js.html">methods/save.js</a>, <a href="methods_save.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -1828,9 +2078,78 @@ when item not found.
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>cart.save()</code></pre>
+    <pre class="prettyprint"><code>ecomCart.save()</code></pre>
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>canFixSubtotal</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>true</code>
+                
+                </td>
+            
+
+            <td class="description last">Fix cart subtotal before saving</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -1874,6 +2193,979 @@ when item not found.
     
 
     
+        <h3 class="subsection-title">Events</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:addItem">addItem</h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="methods_add-item.js.html">methods/add-item.js</a>, <a href="methods_add-item.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Shopping cart data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Item added to cart</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>ecomCart.on('addItem', ({ data, item }) => { console.log(data, item) })</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:change">change</h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constructor.js.html">constructor.js</a>, <a href="constructor.js.html#line93">line 93</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Shopping cart data</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>ecomCart.on('change', ({ data }) => { console.log(data.items) })</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:clear">clear</h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="methods_clear.js.html">methods/clear.js</a>, <a href="methods_clear.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Shopping cart data</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>ecomCart.on('clear', ({ data }) => { console.log(data.subtotal === 0) })</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:increaseItemQnt">increaseItemQnt</h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="methods_increase-item-qnt.js.html">methods/increase-item-qnt.js</a>, <a href="methods_increase-item-qnt.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Shopping cart data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Cart item changed</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>ecomCart.on('increaseItemQnt', ({ data, item }) => { console.log(data, item) })</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:removeItem">removeItem</h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="methods_remove-item.js.html">methods/remove-item.js</a>, <a href="methods_remove-item.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Shopping cart data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Cart item removed</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>ecomCart.on('removeItem', ({ data, item }) => { console.log(data, item) })</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:save">save</h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="methods_save.js.html">methods/save.js</a>, <a href="methods_save.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Shopping cart data</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>ecomCart.on('save', ({ data }) => { console.log(data.subtotal) })</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
 </article>
 
 </section>
@@ -1888,7 +3180,7 @@ when item not found.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 29 2019 20:54:19 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Fri Nov 29 2019 16:26:42 GMT-0300 (Brasilia Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
