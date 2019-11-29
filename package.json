@@ -11,8 +11,7 @@
     "build": "NODE_ENV=production webpack",
     "serve": "webpack-dev-server",
     "doc": "rm -rf ./docs/*; jsdoc ./src -r ./README.md -d ./docs -t ./node_modules/docdash",
-    "release": "rm -rf ./dist; npm run build && standard-version",
-    "publish": "git push --follow-tags origin master && npm publish"
+    "release": "rm -rf ./dist; npm run build && standard-version"
   },
   "repository": {
     "type": "git",
