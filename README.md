@@ -25,8 +25,8 @@ It's available for both Node.js and browser environments.
 ```js
 import ecomCart from '@ecomplus/shopping-cart'
 
-ecomCart.on('addItem', ({ data, item }) => {
-  console.log('New item added to cart:', item)
+ecomCart.on('change', ({ data }) => {
+  console.log('Cart was changed!')
   console.log('Current cart data:', data)
 })
 
