@@ -8,80 +8,87 @@ import removeItem from './methods/remove-item'
 import save from './methods/save'
 import clear from './methods/clear'
 
-/**
- * Simple JS library to handle shopping cart object on E-Com Plus stores.
- * @module @ecomplus/shopping-cart
- * @see EcomCart
- *
- * @example
- * // ES import
- * import EcomCart from '@ecomplus/shopping-cart'
- *
- * @example
- * // With CommonJS
- * const EcomCart = require('@ecomplus/shopping-cart')
- *
- * @example
- * <!-- Global `EcomCart` from CDN on browser -->
- * <script src="https://cdn.jsdelivr.net/npm/@ecomplus/shopping-cart/dist/ecom-cart.root.min.js"></script>
- */
-
-const defaultKey = 'ecomShoppingCart'
 const defaultStorage = typeof window === 'object' && window.localStorage
 
-const EcomCart = function (storeId, storageKey = defaultKey, localStorage = defaultStorage) {
-  const self = this
+/**
+ * Construct a new shopping cart instance object.
+ * @constructor
+ * @param {number} [storeId=$ecomConfig.get('store_id')] - Preset Store ID number
+ * @param {string|null} [storageKey] - Item key to persist cart data
+ * @param {object} [localStorage=window.localStorage] -
+ * [Local Storage interface]{@link https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage}
+ *
+ * @example
+
+// Default instance
+const ecomCart = new EcomCart()
+
+ * @example
+
+// Defining Store ID other than the configured on `$ecomConfig`
+const storeId = 2000
+const customEcomCart = new EcomCart(storeId)
+
+ */
+
+const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorage = defaultStorage) {
+  const ecomCart = this
 
   /**
    * Construct a new shopping cart instance object.
-   * @see EcomCart
+   * @memberof EcomCart
    * @type {function}
+   * @see EcomCart
    */
-  this.Constructor = EcomCart
+  ecomCart.Constructor = EcomCart
 
   /**
    * Respective Store ID number.
-   * @name EcomCart#storeId
+   * @memberof EcomCart
    * @type {number}
    */
-  this.storeId = storeId || $ecomConfig.get('store_id')
+  ecomCart.storeId = storeId || $ecomConfig.get('store_id')
 
   /**
    * Item key to handle persistent JSON {@link EcomCart#data}
    * with [localStorage]{@link EcomSearch#localStorage}.
-   * @name EcomCart#storageKey
+   * @memberof EcomCart
    * @type {string|null}
    */
-  this.storageKey = storageKey
+  ecomCart.storageKey = storageKey
 
   /**
    * [Storage interface]{@link https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage}.
-   * @name EcomCart#localStorage
+   * @memberof EcomCart
    * @type {object}
    */
-  this.localStorage = localStorage
+  ecomCart.localStorage = localStorage
 
   /**
-   * Shopping cart data object.
-   * @name EcomCart#data
-   * @type {array<string>}
+   * Shopping cart data following
+   * {@link https://developers.e-com.plus/docs/api/#/store/carts/carts E-Com Plus cart object model}.
+   * @memberof EcomCart
+   * @type {object}
+   * @property {string} _id - Cart object ID
+   * @property {array<object>} items - List of cart items
+   * @property {number} subtotal - Cart subtotal value
    */
-  this.data = {
+  ecomCart.data = {
     items: [],
     subtotal: 0
   }
 
   const emitter = new EventEmitter()
   ;['on', 'off', 'once'].forEach(method => {
-    self[method] = (ev, fn) => {
+    ecomCart[method] = (ev, fn) => {
       emitter[method](ev, fn)
     }
   })
 
   const methodsMiddleware = (method, args = [], emitChange = true) => {
-    const result = method(self, emitter, args)
+    const result = method(ecomCart, emitter, args)
     if (result && emitChange) {
-      const { data } = self
+      const { data } = ecomCart
       emitter.emit('change', { data })
     }
     return result
@@ -112,7 +119,6 @@ const EcomCart = function (storeId, storageKey = defaultKey, localStorage = defa
   }
 
   if (localStorage && storageKey) {
-    // try to preset cart data from storage
     const json = localStorage.getItem(storageKey)
     if (json) {
       let data
@@ -122,36 +128,14 @@ const EcomCart = function (storeId, storageKey = defaultKey, localStorage = defa
         // ignore invalid JSON
       }
       if (data && Array.isArray(data.items)) {
-        self.data = data
+        ecomCart.data = data
       }
     }
   }
 
-  if (!self.data._id) {
-    // generate new cart ID
-    self.data._id = randomObjectId()
+  if (!ecomCart.data._id) {
+    ecomCart.data._id = randomObjectId()
   }
 }
 
 export default EcomCart
-
-/**
- * Construct a new shopping cart instance object.
- * @constructor EcomCart
- * @param {number} [storeId=$ecomConfig.get('store_id')] - Preset Store ID number
- * @param {string|null} [storageKey='ecomShoppingCart'] - Item key to persist search history data
- * @param {object} [localStorage=window.localStorage] -
- * [Local Storage interface]{@link https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage}
- *
- * @example
-
-const ecomCart = new EcomCart()
-
- *
- * @example
-
-// Defining Store ID other than the configured on `ecomUtils._config`
-const storeId = 2000
-const customEcomCart = new EcomCart(storeId)
-
- */
