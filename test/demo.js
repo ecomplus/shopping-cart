@@ -18,4 +18,8 @@ ecomCart.addItem({
   keep_item_price: false
 })
 
+ecomCart.on('change', ({ data }) => {
+  console.log('Cart was changed again')
+})
+
 ecomCart.increaseItemQnt('12300000000000000000000f', 3)
