@@ -1,7 +1,7 @@
 {
   "name": "@ecomplus/shopping-cart",
   "version": "0.6.3",
-  "description": "Simple vanilla JS library to handle shopping cart object",
+  "description": "Simple vanilla JS library to handle shopping cart object and events",
   "main": "dist/ecom-cart.min.js",
   "module": "src/index.js",
   "browser": "dist/ecom-cart.min.js",
@@ -32,7 +32,7 @@
   "dependencies": {
     "@babel/runtime": "^7.7.4",
     "@ecomplus/utils": "^1.2.1",
-    "core-js": "^3.4.2",
+    "core-js": "^3.4.5",
     "eventemitter3": "^4.0.0"
   },
   "devDependencies": {
