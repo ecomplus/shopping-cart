@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/ecomclub/shopping-cart/compare/v0.6.3...v1.0.0) (2019-11-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **constructor:** changed default object exported
+
+### Bug Fixes
+
+* **import:** 'import * as EventEmitter' (no default export) ([ed88be5](https://github.com/ecomclub/shopping-cart/commit/ed88be5d855df2dd64a24b52d0d56409908e79cc))
+* **methods:** fix methods params to support middleware (default events) ([93f8d34](https://github.com/ecomclub/shopping-cart/commit/93f8d342dfa23350f583928133016c1803a34b08))
+
+
+* **constructor:** export an instance with .Constructor for new ones ([2bf6386](https://github.com/ecomclub/shopping-cart/commit/2bf6386f8554a1a02d992628aa37ce633716c5bf))
+
 ### [0.6.3](https://github.com/ecomclub/shopping-cart/compare/v0.6.2...v0.6.3) (2019-11-17)
 
 ### [0.6.2](https://github.com/ecomclub/shopping-cart/compare/v0.6.1...v0.6.2) (2019-09-12)
