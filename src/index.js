@@ -5,7 +5,7 @@
  * @license MIT
  *
  * @module @ecomplus/shopping-cart
- * @return {ecomCart}
+ * @return {EcomCart} Default `EcomCart` instance object.
  * @see ecomCart
  * @see EcomCart
  *
