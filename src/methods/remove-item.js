@@ -1,21 +1,21 @@
 import fixSubtotal from './../lib/fix-subtotal'
 
 export default ({ data, save }, emitter, [itemId, canSave = true]) => {
-  // find respective item on list by ID
   for (let i = 0; i < data.items.length; i++) {
     const item = data.items[i]
     if (item._id === itemId) {
-      // item found
-      // remove from items array
       data.items.splice(i, 1)
+
       fixSubtotal(data)
       emitter.emit('removeItem', { data, item })
       if (canSave) {
         save(false)
       }
+
       return item
     }
   }
+
   return null
 }
 
@@ -32,6 +32,6 @@ export default ({ data, save }, emitter, [itemId, canSave = true]) => {
  *
  * @example
 
-cart.removeItem('12300000000000000000000f')
+ecomCart.removeItem('12300000000000000000000f')
 
  */

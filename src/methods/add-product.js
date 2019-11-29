@@ -1,18 +1,14 @@
 import { price } from '@ecomplus/utils'
 
 export default ({ addItem }, emitter, [product, variationId, quantity = 1, canSave = true]) => {
-  // parse product object to item
   const item = !variationId || !product.variations
-    ? product
-    : product.variations.find(({ _id }) => _id === variationId)
+    ? product : product.variations.find(({ _id }) => _id === variationId)
   item.product_id = product._id
 
   if (variationId) {
-    // handle selected variation object
     item.variation_id = variationId
     item.slug = product.slug
     if (item.picture_id && product.pictures) {
-      // variation specific picture
       const pictures = product.pictures.filter(picture => {
         return picture._id === item.picture_id
       })
@@ -23,15 +19,11 @@ export default ({ addItem }, emitter, [product, variationId, quantity = 1, canSa
   }
 
   if (!item.picture && product.pictures) {
-    // use first product picture as default
     item.picture = product.pictures[0]
   }
-  // fallback to product min quantity (when variation has not min quantity)
   item.quantity = item.min_quantity || product.min_quantity || quantity
-  // defaults to product price when variation has no defined price
   item.price = price(item) || price(product)
 
-  // add to global cart and return fixed item object
   return addItem(item, canSave)
 }
 
@@ -51,7 +43,7 @@ export default ({ addItem }, emitter, [product, variationId, quantity = 1, canSa
  *
  * @example
 
-cart.addProduct({
+ecomCart.addProduct({
   _id: '123a5432109876543210cdef',
   sku: 's-MP_2B4',
   commodity_type: 'physical',

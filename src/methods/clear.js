@@ -1,6 +1,6 @@
 export default (self, emitter, [canSave = true]) => {
   const { data, save } = self
-  // empty the items array and save
+
   data.items = []
   if (data.subtotal) {
     data.subtotal = 0
@@ -9,6 +9,7 @@ export default (self, emitter, [canSave = true]) => {
   if (canSave) {
     save(false)
   }
+
   return self
 }
 
@@ -17,10 +18,12 @@ export default (self, emitter, [canSave = true]) => {
  * @name EcomCart#clear
  * @description Remove all items from cart and save.
  *
+ * @param {boolean} [canSave=true] - Save empty cart to local storage
+ *
  * @returns {self}
  *
  * @example
 
-cart.clear()
+ecomCart.clear()
 
  */
