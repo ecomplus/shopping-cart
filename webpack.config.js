@@ -3,7 +3,6 @@
 const devMode = process.env.NODE_ENV !== 'production'
 const path = require('path')
 
-// preset default output object
 const output = {
   library: 'ecomCart',
   libraryTarget: 'umd',
@@ -13,7 +12,6 @@ const output = {
   globalObject: 'this'
 }
 
-// base Webpack config
 const config = {
   mode: devMode ? 'development' : 'production',
   entry: path.resolve(__dirname, 'src/index.js'),
@@ -36,52 +34,47 @@ const config = {
   stats: {
     colors: true
   },
-  devtool: 'source-map',
-  externals: devMode ? '' : /^(@babel\/runtime|core-js|@ecomplus\/(utils|client)|eventemitter3)/
+  devtool: 'source-map'
 }
 
-module.exports = devMode
-  // single config object for dev server
-  ? config
+module.exports = devMode ? config : [
+  {
+    ...config,
+    externals: /^(core-js|@ecomplus\/utils|@ecomplus\/client|eventemitter3)/i
+  },
 
-  // multiple production outputs
-  : [
-    // without dependencies/polyfill
-    config,
-
-    // without dependencies but with polyfill
-    {
-      ...config,
-      output: {
-        ...output,
-        filename: output.filename.replace('.min.js', '.root.min.js')
-      },
-      externals: {
-        eventemitter3: {
-          commonjs: 'eventemitter3',
-          commonjs2: 'eventemitter3',
-          root: 'EventEmitter3'
-        },
-        '@ecomplus/utils': {
-          commonjs: '@ecomplus/utils',
-          commonjs2: '@ecomplus/utils',
-          root: 'ecomUtils'
-        },
-        '@ecomplus/client': {
-          commonjs: '@ecomplus/client',
-          commonjs2: '@ecomplus/client',
-          root: 'ecomClient'
-        }
-      }
-    },
-
-    // full bundle with polyfill and dependencies
-    {
-      ...config,
-      output: {
-        ...output,
-        filename: output.filename.replace('.min.js', '.bundle.min.js')
-      },
-      externals: ''
+  {
+    ...config,
+    output: {
+      ...output,
+      filename: output.filename.replace('.min.js', '.bundle.min.js')
     }
-  ]
+  },
+
+  {
+    ...config,
+    target: 'node',
+    optimization: {
+      minimize: false
+    },
+    output: {
+      ...output,
+      filename: output.filename.replace('.min.js', '.node.js')
+    },
+    externals: /^(@ecomplus\/utils|@ecomplus\/client|eventemitter3)/i
+  },
+
+  {
+    ...config,
+    output: {
+      ...output,
+      libraryTarget: 'var',
+      filename: output.filename.replace('.min.js', '.var.min.js')
+    },
+    externals: {
+      '@ecomplus/utils': 'ecomUtils',
+      '@ecomplus/client': 'ecomClient',
+      eventemitter3: 'EventEmitter3'
+    }
+  }
+]
