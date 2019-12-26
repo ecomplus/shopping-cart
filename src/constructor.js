@@ -51,7 +51,7 @@ const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorag
 
   /**
    * Item key to handle persistent JSON {@link EcomCart#data}
-   * with [localStorage]{@link EcomSearch#localStorage}.
+   * with [localStorage]{@link EcomCart#localStorage}.
    * @memberof EcomCart
    * @type {string|null}
    */
