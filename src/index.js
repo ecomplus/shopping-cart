@@ -23,10 +23,10 @@
  *
  * @example
  * <!-- Global `ecomCart` from CDN on browser -->
- * <script src="https://cdn.jsdelivr.net/npm/@ecomplus/shopping-cart/dist/ecom-cart.root.min.js"></script>
+ * <script src="https://cdn.jsdelivr.net/npm/@ecomplus/shopping-cart/dist/ecom-cart.var.min.js"></script>
  *
  * @example
- * <!-- Bundle from CDN with `@ecomplus/utils` and `eventemitter3` -->
+ * <!-- Bundle from CDN with `ecomUtils` and `EventEmitter3` -->
  * <script src="https://cdn.jsdelivr.net/npm/@ecomplus/shopping-cart/dist/ecom-cart.bundle.min.js"></script>
  */
 
