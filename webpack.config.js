@@ -40,7 +40,7 @@ const config = {
 module.exports = devMode ? config : [
   {
     ...config,
-    externals: /^(core-js|@ecomplus\/utils|@ecomplus\/client|eventemitter3)/i
+    externals: /^(core-js|@ecomplus\/utils|eventemitter3)/i
   },
 
   {
@@ -61,7 +61,7 @@ module.exports = devMode ? config : [
       ...output,
       filename: output.filename.replace('.min.js', '.node.js')
     },
-    externals: /^(@ecomplus\/utils|@ecomplus\/client|eventemitter3)/i
+    externals: /^(@ecomplus\/utils|eventemitter3)/i
   },
 
   {
@@ -73,7 +73,6 @@ module.exports = devMode ? config : [
     },
     externals: {
       '@ecomplus/utils': 'ecomUtils',
-      '@ecomplus/client': 'ecomClient',
       eventemitter3: 'EventEmitter3'
     }
   }
