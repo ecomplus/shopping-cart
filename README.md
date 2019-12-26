@@ -45,11 +45,29 @@ ecomCart.increaseItemQnt('12300000000000000000000f', 3)
 
 ### Dependencies
 
-It requires and doesn't include:
-- [`@ecomplus/utils`](https://github.com/ecomclub/ecomplus-utils)
-- [`eventemitter3`](https://github.com/primus/eventemitter3)
+It requires and _may not_ include:
 
-It'll be automatically imported if you're developing on Node.js
-environment or using a bundler such as Webpack,
-**in other case those libraries must be included manually on
-window scope**.
+- `core-js`;
+- [`eventemitter3`](https://github.com/primus/eventemitter3);
+- [`@ecomplus/utils`](https://github.com/ecomclub/ecomplus-utils);
+
+#### Node.js
+
+```bash
+npm i --save @ecomplus/utils @ecomplus/shopping-cart
+```
+
+#### Webpack
+
+```bash
+npm i --save core-js @ecomplus/utils @ecomplus/shopping-cart
+```
+
+#### CDN
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@ecomplus/shopping-cart/dist/ecom-cart.var.min.js"></script>
+```
+
+`EventEmitter3`, `ecomUtils` and `ecomClient` libraries **must be included separately**
+and available on window scope.
