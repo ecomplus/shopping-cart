@@ -69,5 +69,5 @@ npm i --save core-js @ecomplus/utils @ecomplus/shopping-cart
 <script src="https://cdn.jsdelivr.net/npm/@ecomplus/shopping-cart/dist/ecom-cart.var.min.js"></script>
 ```
 
-`EventEmitter3`, `ecomUtils` and `ecomClient` libraries **must be included separately**
+`EventEmitter3` and `ecomUtils` libraries **must be included separately**
 and available on window scope.
