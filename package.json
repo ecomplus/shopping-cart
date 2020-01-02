@@ -30,7 +30,9 @@
   },
   "homepage": "https://github.com/ecomclub/shopping-cart#readme",
   "peerDependencies": {
-    "@ecomplus/utils": "1.x",
+    "@ecomplus/utils": "1.x"
+  },
+  "optionalDependencies": {
     "core-js": "3.x"
   },
   "dependencies": {
