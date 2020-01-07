@@ -1,3 +1,9 @@
+/*!
+ * @ecomplus/shopping-cart
+ * (c) E-Com Club <ti@e-com.club>
+ * Released under the MIT License.
+ */
+
 /**
  * Simple JS library to handle shopping cart object and events on E-Com Plus (not only) stores.
  * {@link https://github.com/ecomclub/shopping-cart GitHub}
