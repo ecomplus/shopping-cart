@@ -2,9 +2,9 @@
   "name": "@ecomplus/shopping-cart",
   "version": "2.0.2",
   "description": "Simple vanilla JS library to handle shopping cart object and events",
-  "main": "dist/ecom-cart.node.js",
   "module": "src/index.js",
   "browser": "dist/ecom-cart.min.js",
+  "main": "dist/ecom-cart.node.js",
   "jsdelivr": "dist/ecom-cart.var.min.js",
   "unpkg": "dist/ecom-cart.var.min.js",
   "scripts": {
