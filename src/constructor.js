@@ -7,6 +7,7 @@ import increaseItemQnt from './methods/increase-item-qnt'
 import removeItem from './methods/remove-item'
 import save from './methods/save'
 import clear from './methods/clear'
+import reset from './methods/reset'
 
 const defaultStorage = typeof window === 'object' && window.localStorage
 
@@ -119,6 +120,10 @@ const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorag
 
   this.clear = (canSave) => {
     return methodsMiddleware(clear, [canSave])
+  }
+
+  this.reset = (canSave) => {
+    return methodsMiddleware(reset, [canSave])
   }
 
   this.save = (canFixSubtotal) => {
