@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/ecomclub/shopping-cart/compare/v2.0.2...v2.1.0) (2020-01-25)
+
+
+### Features
+
+* **reset:** add new 'reset' method ([09807ca](https://github.com/ecomclub/shopping-cart/commit/09807ca36232987f8cb0b359fde4ab0d0c20338e))
+
 ### [2.0.2](https://github.com/ecomclub/shopping-cart/compare/v2.0.1...v2.0.2) (2020-01-07)
 
 ### [2.0.1](https://github.com/ecomclub/shopping-cart/compare/v2.0.0...v2.0.1) (2020-01-02)
