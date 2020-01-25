@@ -16,9 +16,7 @@ ecomCart.reset()
  */
 
 export default (self, emitter, [canSave = true]) => {
-  let { data, save } = self
-
-  data = {
+  self.data = {
     _id: randomObjectId(),
     items: [],
     subtotal: 0
@@ -30,10 +28,12 @@ export default (self, emitter, [canSave = true]) => {
    * @property {object} data - Shopping cart data
    * @example ecomCart.on('reset', ({ data }) => { console.log(data._id) })
    */
-  emitter.emit('reset', { data })
+  emitter.emit('reset', {
+    data: self.data
+  })
 
   if (canSave) {
-    save(false)
+    self.save(false)
   }
   return self
 }
