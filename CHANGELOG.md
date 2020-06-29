@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/ecomclub/shopping-cart/compare/v2.1.1...v2.1.2) (2020-06-29)
+
+
+### Bug Fixes
+
+* **add-item:** check if new item id not equal to variation id ([483b580](https://github.com/ecomclub/shopping-cart/commit/483b5802a1909f55beb10671034d7866f7e43129))
+
 ### [2.1.1](https://github.com/ecomclub/shopping-cart/compare/v2.1.0...v2.1.1) (2020-01-25)
 
 
