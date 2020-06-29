@@ -1,0 +1,40 @@
+name: Publish
+
+on: registry_package
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Edit package.json to remove custom registry config
+        run: |
+          node -p "const pkg = require('./package.json'); \
+          delete pkg.publishConfig.registry; \
+          JSON.stringify(pkg, null, 2)" > pkg.json && mv pkg.json package.json
+
+      - name: Build and publish package to npm registry
+        run: npm run build && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
