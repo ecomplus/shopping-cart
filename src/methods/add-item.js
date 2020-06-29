@@ -53,7 +53,7 @@ export default ({ data, save }, emitter, [newItem, canSave = false]) => {
   }
 
   if (!fixedItem) {
-    if (!newItem._id) {
+    if (!newItem._id || newItem._id === newItem.variation_id) {
       newItem._id = randomObjectId()
     }
     data.items.push(newItem)
