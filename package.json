@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ecomclub/shopping-cart.git"
+    "url": "git+https://github.com/ecomplus/shopping-cart.git"
   },
   "keywords": [
     "ecomplus",
@@ -26,9 +26,9 @@
   "author": "E-Com Club",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ecomclub/shopping-cart/issues"
+    "url": "https://github.com/ecomplus/shopping-cart/issues"
   },
-  "homepage": "https://github.com/ecomclub/shopping-cart#readme",
+  "homepage": "https://github.com/ecomplus/shopping-cart#readme",
   "peerDependencies": {
     "@ecomplus/utils": "^1.2.0"
   },
