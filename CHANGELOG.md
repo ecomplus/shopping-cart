@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/ecomplus/shopping-cart/compare/v2.1.2...v2.1.3) (2020-06-30)
+
+
+### Bug Fixes
+
+* **add-item:** prevent changing original item object (param) ([c78fa77](https://github.com/ecomplus/shopping-cart/commit/c78fa7753eb2dc6ad98a41e80f94e382e14fb264))
+
 ### [2.1.2](https://github.com/ecomclub/shopping-cart/compare/v2.1.1...v2.1.2) (2020-06-29)
 
 
