@@ -37,8 +37,8 @@ ecomCart.addProduct({
  */
 
 export default ({ addItem }, emitter, [product, variationId, quantity = 1, canSave = true]) => {
-  const item = !variationId || !product.variations
-    ? product : product.variations.find(({ _id }) => _id === variationId)
+  const item = Object.assign({}, !variationId || !product.variations
+    ? product : product.variations.find(({ _id }) => _id === variationId))
   item.product_id = product._id
 
   if (variationId) {
