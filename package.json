@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/ecomplus/shopping-cart#readme",
   "peerDependencies": {
-    "@ecomplus/utils": "^1.2.0"
+    "@ecomplus/utils": "^1.4.1"
   },
   "optionalDependencies": {
     "core-js": "3.x"
@@ -45,7 +45,7 @@
     "@commitlint/config-conventional": "^9.0.1",
     "@ecomplus/utils": "^1.4.1",
     "babel-loader": "^8.1.0",
-    "core-js": "^3.6.1",
+    "core-js": "^3.6.5",
     "docdash": "^1.2.0",
     "husky": "^4.2.5",
     "jsdoc": "^3.6.4",
