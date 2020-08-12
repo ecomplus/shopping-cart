@@ -26,7 +26,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
 
       - name: Edit package.json to remove custom registry config
         run: |
