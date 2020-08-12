@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.6](https://github.com/ecomplus/shopping-cart/compare/v2.1.5...v2.1.6) (2020-08-12)
+
+
+### Bug Fixes
+
+* **add-product:** merge product with variation properties ([ca586bd](https://github.com/ecomplus/shopping-cart/commit/ca586bdd779a9b0eb1c3f1f218b3b088d70d2359))
+
 ### [2.1.5](https://github.com/ecomplus/shopping-cart/compare/v2.1.4...v2.1.5) (2020-07-02)
 
 
