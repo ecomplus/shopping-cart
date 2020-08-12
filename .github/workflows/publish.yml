@@ -1,6 +1,12 @@
 name: Publish
 
-on: registry_package
+on:
+  registry_package:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/publish'
 
 jobs:
   publish:
