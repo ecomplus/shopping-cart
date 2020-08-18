@@ -7,8 +7,6 @@
 /**
  * Simple JS library to handle shopping cart object and events on E-Com Plus (not only) stores.
  * {@link https://github.com/ecomclub/shopping-cart GitHub}
- * @author E-Com Club <ti@e-com.club>
- * @license MIT
  *
  * @module @ecomplus/shopping-cart
  * @return {EcomCart} Default `EcomCart` instance object.
