@@ -41,8 +41,8 @@
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
-    "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
     "@ecomplus/utils": "^1.4.1",
     "babel-loader": "^8.1.0",
     "core-js": "^3.6.5",
@@ -50,7 +50,7 @@
     "husky": "^4.2.5",
     "jsdoc": "^3.6.5",
     "standard": "^14.3.4",
-    "standard-version": "^8.0.2",
+    "standard-version": "^9.0.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
