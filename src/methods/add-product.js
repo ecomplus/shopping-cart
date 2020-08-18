@@ -60,8 +60,9 @@ export default ({ addItem }, emitter, [product, variationId, quantity = 1, canSa
   if (!item.picture && product.pictures) {
     item.picture = product.pictures[0]
   }
-  item.quantity = item.min_quantity || product.min_quantity || quantity
-  item.max_quantity = product.quantity
+  item.max_quantity = item.quantity || product.quantity
+  const minQuantity = item.min_quantity || product.min_quantity
+  item.quantity = minQuantity > 0 ? Math.max(minQuantity, quantity) : quantity
   item.price = price(item) || price(product)
 
   return addItem(item, canSave)
