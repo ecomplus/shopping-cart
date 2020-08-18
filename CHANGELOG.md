@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.7](https://github.com/ecomplus/shopping-cart/compare/v2.1.6...v2.1.7) (2020-08-18)
+
+
+### Bug Fixes
+
+* **add-product:** fix handling max/min quantities ([07e5f80](https://github.com/ecomplus/shopping-cart/commit/07e5f80e75f5a5ff3bd9ff46052175a8b3577a25))
+
 ### [2.1.6](https://github.com/ecomplus/shopping-cart/compare/v2.1.5...v2.1.6) (2020-08-12)
 
 
