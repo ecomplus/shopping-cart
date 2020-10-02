@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/ecomplus/shopping-cart/compare/v2.1.7...v2.2.0) (2020-10-02)
+
+
+### Features
+
+* **parse-product:** add new 'parseProduct' method ([f99f7a6](https://github.com/ecomplus/shopping-cart/commit/f99f7a642927e1f49527278d404bca0d49784b8e))
+
 ### [2.1.7](https://github.com/ecomplus/shopping-cart/compare/v2.1.6...v2.1.7) (2020-08-18)
 
 
