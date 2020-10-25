@@ -41,7 +41,11 @@ export default ({ data, save }, emitter, [newItem, canSave = false]) => {
   let fixedItem
   for (let i = 0; i < data.items.length; i++) {
     const item = data.items[i]
-    if (item.product_id === newItem.product_id && item.variation_id === newItem.variation_id) {
+    if (
+      item.product_id === newItem.product_id &&
+      item.variation_id === newItem.variation_id &&
+      (!item.customizations || !item.customizations.length)
+    ) {
       item.quantity += newItem.quantity
       if (newItem.price) {
         item.price = newItem.price
