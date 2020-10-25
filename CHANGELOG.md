@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/ecomplus/shopping-cart/compare/v2.3.0...v2.3.1) (2020-10-25)
+
+
+### Bug Fixes
+
+* **add-item:** when checking current items, skip those with customizations ([ad2d8d1](https://github.com/ecomplus/shopping-cart/commit/ad2d8d19ab7b32daf0ab6fe31889f513d1fc97ac))
+* **increase-item-qnt:** do not change item final price, quantity only ([6072131](https://github.com/ecomplus/shopping-cart/commit/6072131e00b0f1281e690187a867045694b8c6a9))
+* **item-final-price:** preset as item price ([46817e0](https://github.com/ecomplus/shopping-cart/commit/46817e06ea37aa713a720c4d278458e65e6ecd81))
+
 ## [2.3.0](https://github.com/ecomplus/shopping-cart/compare/v2.2.0...v2.3.0) (2020-10-25)
 
 
