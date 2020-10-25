@@ -1,5 +1,6 @@
 import { randomObjectId } from '@ecomplus/utils'
 import fixItemQuantity from './../lib/fix-item-quantity'
+import fixItemFinalPrice from './../lib/fix-item-final-price'
 import fixSubtotal from './../lib/fix-subtotal'
 
 /**
@@ -59,6 +60,7 @@ export default ({ data, save }, emitter, [newItem, canSave = false]) => {
     }
     data.items.push(itemCopy)
     fixedItem = fixItemQuantity(itemCopy)
+    fixItemFinalPrice(fixedItem)
   }
   fixSubtotal(data)
 

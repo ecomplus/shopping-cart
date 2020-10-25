@@ -1,4 +1,5 @@
 import fixItemQuantity from './../lib/fix-item-quantity'
+import fixItemFinalPrice from './../lib/fix-item-final-price'
 import fixSubtotal from './../lib/fix-subtotal'
 
 export default ({ data, save }, emitter, [itemId, quantity = 1, canSave = true]) => {
@@ -9,6 +10,7 @@ export default ({ data, save }, emitter, [itemId, quantity = 1, canSave = true])
   item.quantity += quantity
 
   fixItemQuantity(item)
+  fixItemFinalPrice(item)
   fixSubtotal(data)
 
   /**
