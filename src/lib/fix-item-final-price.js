@@ -5,9 +5,9 @@ export default item => {
     item.customizations.forEach(customization => {
       if (customization.add_to_price) {
         const { type, addition } = customization.add_to_price
-        item.final_price += type === 'percentage'
-          ? item.price * addition / 100
-          : addition
+        item.final_price += type === 'fixed'
+          ? addition
+          : item.price * addition / 100
       }
     })
   }
