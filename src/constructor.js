@@ -3,6 +3,7 @@ import * as EventEmitter from 'eventemitter3'
 
 import addItem from './methods/add-item'
 import addPoduct from './methods/add-product'
+import fixItem from './methods/fix-item'
 import increaseItemQnt from './methods/increase-item-qnt'
 import parseProduct from './methods/parse-product'
 import removeItem from './methods/remove-item'
@@ -109,6 +110,10 @@ const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorag
 
   this.addProduct = (product, variationId, quantity, canSave) => {
     return methodsMiddleware(addPoduct, [product, variationId, quantity, canSave])
+  }
+
+  this.fixItem = (item, canSave) => {
+    return methodsMiddleware(fixItem, [item, canSave])
   }
 
   this.increaseItemQnt = (itemId, quantity, canSave) => {
