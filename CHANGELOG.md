@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/ecomplus/shopping-cart/compare/v2.3.1...v2.4.0) (2020-11-11)
+
+
+### Features
+
+* **kit-product:** handle add item with kit parent and fix final price ([6234abb](https://github.com/ecomplus/shopping-cart/commit/6234abb1e12092979fa5a379fdae500da514bcff))
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([2558f2c](https://github.com/ecomplus/shopping-cart/commit/2558f2ce6e744d0192b325bcf9d32f33e14df00e))
+
 ### [2.3.1](https://github.com/ecomplus/shopping-cart/compare/v2.3.0...v2.3.1) (2020-10-25)
 
 
