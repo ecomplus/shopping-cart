@@ -29,7 +29,7 @@ ecomCart.addItem({
 
  */
 
-export default ({ data, save }, emitter, [newItem, canSave = false]) => {
+export default ({ data, save }, emitter, [newItem, canSave = true]) => {
   if (
     typeof newItem.product_id !== 'string' ||
     typeof newItem.quantity !== 'number' || !(newItem.quantity >= 0) ||
