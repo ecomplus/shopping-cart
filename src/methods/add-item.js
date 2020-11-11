@@ -46,6 +46,16 @@ export default ({ data, save }, emitter, [newItem, canSave = false]) => {
       item.variation_id === newItem.variation_id &&
       (!item.customizations || !item.customizations.length)
     ) {
+      if (item.kit_product) {
+        if (!newItem.kit_product || newItem.kit_product._id !== item.kit_product._id) {
+          continue
+        } else {
+          Object.assign(item.kit_product, newItem.kit_product)
+        }
+      } else if (newItem.kit_product) {
+        continue
+      }
+
       item.quantity += newItem.quantity
       if (newItem.price) {
         item.price = newItem.price
