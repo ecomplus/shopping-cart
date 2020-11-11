@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.1](https://github.com/ecomplus/shopping-cart/compare/v2.4.0...v2.4.1) (2020-11-11)
+
+
+### Bug Fixes
+
+* **add-item:** 'canSave' defaults to true (as documented) ([9a31751](https://github.com/ecomplus/shopping-cart/commit/9a31751bbf487965a45e777cf28f2f8096958f29))
+
 ## [2.4.0](https://github.com/ecomplus/shopping-cart/compare/v2.3.1...v2.4.0) (2020-11-11)
 
 
