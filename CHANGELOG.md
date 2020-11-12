@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/ecomplus/shopping-cart/compare/v2.4.1...v2.5.0) (2020-11-12)
+
+
+### Features
+
+* **remove-item:** should also remove same kit items ([0c1ac0d](https://github.com/ecomplus/shopping-cart/commit/0c1ac0d57e648baad99a1a495109839925204fe9))
+
 ### [2.4.1](https://github.com/ecomplus/shopping-cart/compare/v2.4.0...v2.4.1) (2020-11-11)
 
 
