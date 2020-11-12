@@ -21,7 +21,22 @@ export default ({ data, save }, emitter, [itemId, canSave = true]) => {
   for (let i = 0; i < data.items.length; i++) {
     const item = data.items[i]
     if (item._id === itemId) {
-      data.items.splice(i, 1)
+      const removedItems = data.items.splice(i, 1)
+
+      if (item.kit_product) {
+        const kitProductId = item.kit_product._id
+        let i = 0
+        while (i < data.items.length) {
+          const item = data.items[i]
+          if (item.kit_product && item.kit_product._id === kitProductId) {
+            removedItems.push(item)
+            data.items.splice(i, 1)
+          } else {
+            i++
+          }
+        }
+      }
+
       fixSubtotal(data)
 
       /**
@@ -31,7 +46,9 @@ export default ({ data, save }, emitter, [itemId, canSave = true]) => {
        * @property {object} item - Cart item removed
        * @example ecomCart.on('removeItem', ({ data, item }) => { console.log(data, item) })
        */
-      emitter.emit('removeItem', { data, item })
+      removedItems.forEach(item => {
+        emitter.emit('removeItem', { data, item })
+      })
 
       if (canSave) {
         save(false)
