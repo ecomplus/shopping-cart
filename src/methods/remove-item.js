@@ -17,7 +17,7 @@ ecomCart.removeItem('12300000000000000000000f')
 
  */
 
-export default ({ data, save }, emitter, [itemId, canSave = true]) => {
+export default ({ increaseItemQnt, data, save }, emitter, [itemId, canSave = true]) => {
   for (let i = 0; i < data.items.length; i++) {
     const item = data.items[i]
     if (item._id === itemId) {
@@ -29,6 +29,16 @@ export default ({ data, save }, emitter, [itemId, canSave = true]) => {
         while (i < data.items.length) {
           const item = data.items[i]
           if (item.kit_product && item.kit_product._id === kitProductId) {
+            if (Array.isArray(item.kit_product.composition)) {
+              const kitItem = item.kit_product.composition.find(({ _id }) => _id === item.product_id)
+              if (!kitItem || kitItem.quantity < item.quantity) {
+                if (kitItem) {
+                  increaseItemQnt(item._id, kitItem.quantity - item.quantity)
+                }
+                i++
+                continue
+              }
+            }
             removedItems.push(item)
             data.items.splice(i, 1)
           } else {
