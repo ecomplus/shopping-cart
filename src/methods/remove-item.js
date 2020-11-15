@@ -30,10 +30,13 @@ export default ({ increaseItemQnt, data, save }, emitter, [itemId, canSave = tru
           const item = data.items[i]
           if (item.kit_product && item.kit_product._id === kitProductId) {
             if (Array.isArray(item.kit_product.composition)) {
-              const kitItem = item.kit_product.composition.find(({ _id }) => _id === item.product_id)
+              const kitItem = item.kit_product.composition.find(kitItem => {
+                return kitItem._id === item.product_id &&
+                  kitItem.variation_id === item.variation_id
+              })
               if (!kitItem || kitItem.quantity < item.quantity) {
                 if (kitItem) {
-                  increaseItemQnt(item._id, kitItem.quantity - item.quantity)
+                  increaseItemQnt(item._id, -kitItem.quantity)
                 }
                 i++
                 continue
