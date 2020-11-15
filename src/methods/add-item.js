@@ -39,31 +39,24 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
   }
 
   let fixedItem
-  for (let i = 0; i < data.items.length; i++) {
-    const item = data.items[i]
-    if (
-      item.product_id === newItem.product_id &&
-      item.variation_id === newItem.variation_id &&
-      (!item.customizations || !item.customizations.length)
-    ) {
-      if (item.kit_product) {
-        if (!newItem.kit_product || newItem.kit_product._id !== item.kit_product._id) {
-          continue
-        } else {
-          Object.assign(item.kit_product, newItem.kit_product)
+  if (!newItem.kit_product) {
+    for (let i = 0; i < data.items.length; i++) {
+      const item = data.items[i]
+      if (
+        !item.kit_product &&
+        item.product_id === newItem.product_id &&
+        item.variation_id === newItem.variation_id &&
+        (!item.customizations || !item.customizations.length)
+      ) {
+        item.quantity += newItem.quantity
+        if (newItem.price) {
+          item.price = newItem.price
         }
-      } else if (newItem.kit_product) {
-        continue
+        if (newItem.final_price) {
+          item.final_price = newItem.final_price
+        }
+        fixedItem = fixItemQuantity(item)
       }
-
-      item.quantity += newItem.quantity
-      if (newItem.price) {
-        item.price = newItem.price
-      }
-      if (newItem.final_price) {
-        item.final_price = newItem.final_price
-      }
-      fixedItem = fixItemQuantity(item)
     }
   }
 
