@@ -29,18 +29,18 @@ export default ({ increaseItemQnt, data, save }, emitter, [itemId, canSave = tru
         while (i < data.items.length) {
           const item = data.items[i]
           if (item.kit_product && item.kit_product._id === kitProductId) {
-            if (Array.isArray(item.kit_product.composition)) {
-              const kitItem = item.kit_product.composition.find(kitItem => {
+            const { composition } = item.kit_product
+            if (Array.isArray(composition)) {
+              const kitItemIndex = composition.findIndex(kitItem => {
                 return kitItem._id === item.product_id &&
-                  kitItem.variation_id === item.variation_id
+                  kitItem.variation_id === item.variation_id &&
+                  kitItem.quantity === item.quantity
               })
-              if (!kitItem || kitItem.quantity < item.quantity) {
-                if (kitItem) {
-                  increaseItemQnt(item._id, -kitItem.quantity)
-                }
+              if (kitItemIndex === -1) {
                 i++
                 continue
               }
+              composition.splice(kitItemIndex, 1)
             }
             removedItems.push(item)
             data.items.splice(i, 1)
