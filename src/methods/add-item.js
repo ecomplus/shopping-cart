@@ -62,7 +62,11 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
 
   if (!fixedItem) {
     const itemCopy = Object.assign({}, newItem)
-    if (!newItem._id || newItem._id === newItem.variation_id) {
+    if (
+      !newItem._id ||
+      newItem._id === newItem.variation_id ||
+      data.items.find(({ _id }) => _id === newItem._id)
+    ) {
       itemCopy._id = randomObjectId()
     }
     data.items.push(itemCopy)
