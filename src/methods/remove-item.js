@@ -25,11 +25,11 @@ export default ({ increaseItemQnt, data, save }, emitter, [itemId, canSave = tru
 
       if (item.kit_product) {
         const kitProductId = item.kit_product._id
+        const { composition } = item.kit_product
         let i = 0
         while (i < data.items.length) {
           const item = data.items[i]
           if (item.kit_product && item.kit_product._id === kitProductId) {
-            const { composition } = item.kit_product
             if (Array.isArray(composition)) {
               const kitItemIndex = composition.findIndex(kitItem => {
                 return kitItem._id === item.product_id &&
