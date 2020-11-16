@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.3](https://github.com/ecomplus/shopping-cart/compare/v2.5.2...v2.5.3) (2020-11-16)
+
+
+### Bug Fixes
+
+* **add-item:** prevent adding items with duplicated object id ([77cd1a7](https://github.com/ecomplus/shopping-cart/commit/77cd1a71c5aae673513c5343d9f2d96d36805c02))
+* **remove-item:** check variation and quantity to remove same kit items ([e7ff2ee](https://github.com/ecomplus/shopping-cart/commit/e7ff2eebbe44c34c5a14bb7cdbbf7326e9dcb2a2))
+
 ### [2.5.2](https://github.com/ecomplus/shopping-cart/compare/v2.5.1...v2.5.2) (2020-11-15)
 
 
