@@ -35,7 +35,10 @@ const item = ecomCart.parseProduct({
 
  */
 
-export default ({ addItem }, emitter, [product, variationId, quantity = 1]) => {
+export default ({ addItem }, emitter, [product, variationId, quantity]) => {
+  if (typeof quantity !== 'number') {
+    quantity = product.min_quantity || 1
+  }
   const item = Object.assign({}, product)
   if (variationId && product.variations) {
     Object.assign(item, product.variations.find(({ _id }) => _id === variationId))

@@ -34,6 +34,6 @@ ecomCart.addProduct({
 
  */
 
-export default ({ addItem, parseProduct }, emitter, [product, variationId, quantity = 1, canSave = true]) => {
+export default ({ addItem, parseProduct }, emitter, [product, variationId, quantity, canSave = true]) => {
   return addItem(parseProduct(product, variationId, quantity), canSave)
 }
