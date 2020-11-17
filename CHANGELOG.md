@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.5](https://github.com/ecomplus/shopping-cart/compare/v2.5.4...v2.5.5) (2020-11-17)
+
+
+### Bug Fixes
+
+* **parse-product:** also check quantity NaN ([531959c](https://github.com/ecomplus/shopping-cart/commit/531959ce3b491d93313e6c0a3b6c9c82c7222823))
+* **parse-product:** quantity defaults to product 'min_quantity' or (then) 1 ([9daf54e](https://github.com/ecomplus/shopping-cart/commit/9daf54ebb79ebc1bece370bc53c2459041fd1728))
+
 ### [2.5.4](https://github.com/ecomplus/shopping-cart/compare/v2.5.3...v2.5.4) (2020-11-16)
 
 
