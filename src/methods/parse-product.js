@@ -36,7 +36,7 @@ const item = ecomCart.parseProduct({
  */
 
 export default ({ addItem }, emitter, [product, variationId, quantity]) => {
-  if (typeof quantity !== 'number') {
+  if (typeof quantity !== 'number' || isNaN(quantity)) {
     quantity = product.min_quantity || 1
   }
   const item = Object.assign({}, product)
