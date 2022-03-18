@@ -37,6 +37,9 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
   ) {
     return null
   }
+  try {
+    data = { ...data, items: JSON.parse(localStorage.getItem('ecomShoppingCart')).items}
+  } catch (e) { }
 
   let fixedItem
   if (!newItem.kit_product) {
