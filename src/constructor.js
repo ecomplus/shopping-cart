@@ -81,6 +81,19 @@ const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorag
     subtotal: 0
   }
 
+  /**
+   * Shopping cart data following
+   * @memberof EcomCart
+   * @type {object}
+   * @property {string} _id - Cart object ID
+   * @property {array<object>} items - List of cart items
+   * @property {number} subtotal - Cart subtotal value
+  */
+  ecomCart.cart = {
+    items: [],
+    subtotal: 0
+  }
+
   const emitter = new EventEmitter()
   ;['on', 'off', 'once'].forEach(method => {
     ecomCart[method] = (ev, fn) => {
@@ -109,7 +122,10 @@ const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorag
   }
 
   this.addProduct = (product, variationId, quantity, canSave) => {
-    return methodsMiddleware(addPoduct, [product, variationId, quantity, canSave])
+    if(ecomCart.cart.items) ecomCart.data = ecomCart.cart
+    const productAdded = methodsMiddleware(addPoduct, [product, variationId, quantity, canSave])
+    ecomCart.cart = cloneDeep(ecomCart.data)
+    return productAdded
   }
 
   this.fixItem = (item, canSave) => {
@@ -151,6 +167,7 @@ const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorag
       }
       if (data && Array.isArray(data.items)) {
         ecomCart.data = data
+        ecomCart.cart = data
       }
     }
   }
