@@ -10,6 +10,7 @@ import removeItem from './methods/remove-item'
 import save from './methods/save'
 import clear from './methods/clear'
 import reset from './methods/reset'
+import * as cloneDeep from 'lodash.clonedeep'
 
 const defaultStorage = typeof window === 'object' && window.localStorage
 
