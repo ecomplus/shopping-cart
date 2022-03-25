@@ -72,7 +72,6 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
     if (newItem.customizations) {
       newItem.customizations.forEach((customization, i) => {
         itemCopy.customizations[i] = Object.assign({}, customization)
-        console.log(itemCopy.customizations[i])
       })
     }
     data.items.push(itemCopy)
