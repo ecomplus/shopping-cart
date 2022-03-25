@@ -69,6 +69,11 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
     ) {
       itemCopy._id = randomObjectId()
     }
+    if (newItem.customizations) {
+      newItem.customizations.forEach((customization, i) => {
+        itemCopy.customizations[i] = Object.assign({}, customization)
+      })
+    }
     data.items.push(itemCopy)
     fixedItem = fixItemQuantity(itemCopy)
     fixItemFinalPrice(fixedItem)
