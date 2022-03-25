@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.6](https://github.com/ecomplus/shopping-cart/compare/v2.5.5...v2.5.6) (2022-03-25)
+
+
+### Bug Fixes
+
+* **add-item:** reassign `customizations` obj to prevent wrong edits by reference ([#158](https://github.com/ecomplus/shopping-cart/issues/158)) ([51fd0f2](https://github.com/ecomplus/shopping-cart/commit/51fd0f26f424d6bc290165cb7ebccfe36437de5a))
+
 ### [2.5.5](https://github.com/ecomplus/shopping-cart/compare/v2.5.4...v2.5.5) (2020-11-17)
 
 
