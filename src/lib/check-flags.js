@@ -4,7 +4,7 @@ export default (item, newItem) => {
     const newItemFlags = newItem.flags
     if (!itemFlags && !newItemFlags) {
       return true
-    } else if (!itemFlags && newItemFlags || itemFlags && !newItemFlags) {
+    } else if (!itemFlags && newItemFlags || (itemFlags && !newItemFlags)) {
       return false
     } else {
       return itemFlags.every(flag => newItemFlags.includes(flag))
