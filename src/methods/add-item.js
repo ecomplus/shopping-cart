@@ -39,8 +39,6 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
     return null
   }
 
-  const check
-
   let fixedItem
   if (!newItem.kit_product) {
     for (let i = 0; i < data.items.length; i++) {
