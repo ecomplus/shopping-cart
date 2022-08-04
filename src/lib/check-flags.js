@@ -1,13 +1,13 @@
 export default (item, newItem) => {
-    // check flags
-    const itemFlags = item.flags
-    const newItemFlags = newItem.flags
-    if (!itemFlags && !newItemFlags) {
-      return true
-    } else if (!itemFlags && newItemFlags || (itemFlags && !newItemFlags)) {
-      return false
-    } else {
-      return itemFlags.every(flag => newItemFlags.includes(flag))
-    }
+  if (!item.flags && !newItem.flags) {
+    return true
+  } else if (
+    !item.flags ||
+    !newItem.flags ||
+    item.flags.length !== newItem.flags.length
+  ) {
+    return false
+  } else {
+    return item.flags.every(flag => newItem.flags.includes(flag))
   }
-  
+}
