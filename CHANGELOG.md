@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.7](https://github.com/ecomplus/shopping-cart/compare/v2.5.6...v2.5.7) (2022-08-04)
+
+
+### Bug Fixes
+
+* add new item with same product id is flags doesn't match ([#187](https://github.com/ecomplus/shopping-cart/issues/187)) ([a9addd9](https://github.com/ecomplus/shopping-cart/commit/a9addd91f70bf4dfd4f624819ccee805f7721513))
+* properly checking flags length when adding new item ([3713fd3](https://github.com/ecomplus/shopping-cart/commit/3713fd337d42c9900cd42dc7e7aec01aa5b6bc9a)), closes [#discussion_r938315189](https://github.com/ecomplus/shopping-cart/issues/discussion_r938315189)
+* syntax fixes ([1028912](https://github.com/ecomplus/shopping-cart/commit/1028912cbe7dba308b8452acd0dee6223bfae224))
+
 ### [2.5.6](https://github.com/ecomplus/shopping-cart/compare/v2.5.5...v2.5.6) (2022-03-25)
 
 
