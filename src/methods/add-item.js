@@ -55,6 +55,13 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
         if (newItem.final_price) {
           item.final_price = newItem.final_price
         }
+        if (newItem.flags) {
+          if (!item.flags) {
+            item.flags = newItem.flags
+          } else {
+            item.flags.concat(newItem.flags)
+          }
+        }
         fixedItem = fixItemQuantity(item)
       }
     }
