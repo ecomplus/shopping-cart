@@ -1,4 +1,5 @@
 import { randomObjectId } from '@ecomplus/utils'
+import checkFlags from '../lib/check-flags'
 import fixItemQuantity from './../lib/fix-item-quantity'
 import fixItemFinalPrice from './../lib/fix-item-final-price'
 import fixSubtotal from './../lib/fix-subtotal'
@@ -38,6 +39,8 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
     return null
   }
 
+  const check
+
   let fixedItem
   if (!newItem.kit_product) {
     for (let i = 0; i < data.items.length; i++) {
@@ -46,7 +49,8 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
         !item.kit_product &&
         item.product_id === newItem.product_id &&
         item.variation_id === newItem.variation_id &&
-        (!item.customizations || !item.customizations.length)
+        (!item.customizations || !item.customizations.length) &&
+        checkFlags(item, newItem)
       ) {
         item.quantity += newItem.quantity
         if (newItem.price) {
