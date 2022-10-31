@@ -45,6 +45,7 @@ export default ({ data, save }, emitter, [newItem, canSave = true]) => {
       const item = data.items[i]
       if (
         !item.kit_product &&
+        !item.keep_item_quantity &&
         item.product_id === newItem.product_id &&
         item.variation_id === newItem.variation_id &&
         (!item.customizations || !item.customizations.length) &&
