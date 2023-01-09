@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.9](https://github.com/ecomplus/shopping-cart/compare/v2.5.8...v2.5.9) (2023-01-09)
+
+
+### Bug Fixes
+
+* **deps:** accept `eventemitter3` v4 and v5 ([64cfc63](https://github.com/ecomplus/shopping-cart/commit/64cfc635894a8cbc653f4daf63a7b2864f6132dd))
+* **deps:** update dependency eventemitter3 to v5 ([#210](https://github.com/ecomplus/shopping-cart/issues/210)) ([c5557ee](https://github.com/ecomplus/shopping-cart/commit/c5557ee7a232fa1c21d1552ddc923935340d31d6))
+
 ### [2.5.8](https://github.com/ecomplus/shopping-cart/compare/v2.5.7...v2.5.8) (2022-10-31)
 
 
