@@ -39,13 +39,13 @@
     "eventemitter3": "^4.0.7 || ^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
+    "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
     "@ecomplus/utils": "^1.4.1",
     "babel-loader": "^8.3.0",
-    "core-js": "^3.29.0",
+    "core-js": "^3.29.1",
     "docdash": "^2.0.1",
     "husky": "^4.3.8",
     "jsdoc": "^4.0.2",
