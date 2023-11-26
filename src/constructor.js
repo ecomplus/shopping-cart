@@ -11,6 +11,9 @@ import save from './methods/save'
 import clear from './methods/clear'
 import reset from './methods/reset'
 
+const _env = (typeof window === 'object' && window) ||
+  (typeof process === 'object' && process && process.env) ||
+  {}
 const defaultStorage = typeof window === 'object' && window.localStorage
 
 /**
@@ -34,7 +37,11 @@ const customEcomCart = new EcomCart(storeId)
 
  */
 
-const EcomCart = function (storeId, storageKey = 'ecomShoppingCart', localStorage = defaultStorage) {
+const EcomCart = function (
+  storeId,
+  storageKey = _env.ECOM_CART_STORAGE_KEY || 'ecomShoppingCart',
+  localStorage = defaultStorage
+) {
   const ecomCart = this
 
   /**
