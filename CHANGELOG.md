@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/ecomplus/shopping-cart/compare/v2.5.9...v2.6.0) (2023-11-26)
+
+
+### Features
+
+* check global `ECOM_CART_STORAGE_KEY` to optionally change default key ([771ad6e](https://github.com/ecomplus/shopping-cart/commit/771ad6e6c976a67d720b39057508226775b812cd))
+
 ### [2.5.9](https://github.com/ecomplus/shopping-cart/compare/v2.5.8...v2.5.9) (2023-01-09)
 
 
