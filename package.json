@@ -33,7 +33,7 @@
     "@ecomplus/utils": "^1.4.1"
   },
   "optionalDependencies": {
-    "core-js": "3.x"
+    "core-js": "3.36.1"
   },
   "dependencies": {
     "eventemitter3": "^4.0.7 || ^5.0.0"
