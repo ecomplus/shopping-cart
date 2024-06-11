@@ -51,9 +51,9 @@
     "jsdoc": "^4.0.3",
     "standard": "^17.1.0",
     "commit-and-tag-version": "^9.6.0",
-    "webpack": "^4.47.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.3"
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "husky": {
     "hooks": {
