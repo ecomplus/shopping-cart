@@ -39,8 +39,8 @@
     "eventemitter3": "^4.0.7 || ^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.4",
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
     "@commitlint/cli": "^17.8.1",
     "@commitlint/config-conventional": "^17.8.1",
     "@ecomplus/utils": "^1.4.1",
@@ -48,7 +48,7 @@
     "core-js": "^3.38.1",
     "docdash": "^2.0.2",
     "husky": "^8.0.3",
-    "jsdoc": "^4.0.3",
+    "jsdoc": "^4.0.4",
     "standard": "^17.1.2",
     "commit-and-tag-version": "^9.6.0",
     "webpack": "^4.47.0",
